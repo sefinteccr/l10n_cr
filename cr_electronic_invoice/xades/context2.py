@@ -8,7 +8,8 @@ from .tobella_xades import XAdESContext, PolicyId, template, constants
 import hashlib
 import xmlsig
 from base64 import b64decode, b64encode
-from urllib import parse, request
+from urllib2 import urlopen
+from urlparse import urlparse
 import logging
 import datetime
 import pytz
