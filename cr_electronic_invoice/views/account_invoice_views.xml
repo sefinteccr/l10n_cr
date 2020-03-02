@@ -41,6 +41,12 @@
                     <field name="fname_xml_comprobante" invisible="1" readonly="1"/>
                     <field name="xml_comprobante" filename="fname_xml_comprobante"/>
                     <field name="electronic_invoice_return_message" readonly="1"/>
+                    <field name="total_service_gravado" invisible="1"/>
+                    <field name="total_service_exento" invisible="1"/>
+                    <field name="total_service_exonerado" invisible="1"/>
+                    <field name="total_merchandise_gravado" invisible="1"/>
+                    <field name="total_merchandise_exento" invisible="1"/>
+                    <field name="total_merchandise_exonerado" invisible="1"/>
                     
                     <!--<field name="electronic_invoice_return_message" readonly="1"/>-->
                 </field>

@@ -299,6 +299,12 @@ class AccountInvoiceElectronic(models.Model):
 
     economic_activities_ids = fields.Many2many('economic.activity', string=u'Actividades Económicas', compute='_get_economic_activities')
 
+    total_service_gravado = fields.Char( readonly=True, required=False, )
+    total_service_exento = fields.Char( readonly=True, required=False, )
+    total_service_exonerado = fields.Char( readonly=True, required=False, )
+    total_merchandise_gravado = fields.Char( readonly=True, required=False, )
+    total_merchandise_exento = fields.Char( readonly=True, required=False, )
+    total_merchandise_exonerado = fields.Char(readonly=True, required=False, )
     _sql_constraints = [
         ('number_electronic_uniq', 'unique (company_id, number_electronic)',
          "La clave de comprobante debe ser única"),
@@ -965,6 +971,12 @@ class AccountInvoiceElectronic(models.Model):
                     tipo_documento_referencia = inv.reference_document_id.code
                     codigo_referencia = inv.reference_code_id.code
                     razon_referencia = inv.reference_code_id.name
+                if inv.partner_id.vat == '4000042139':
+                    tipo_documento_referencia = 99
+                    codigo_referencia = 99
+                    fecha_emision_referencia = inv.date_issuance
+                    numero_documento_referencia = inv.name
+                    razon_referencia = inv.name
 
                 if inv.payment_term_id:
                     sale_conditions = inv.payment_term_id.sale_conditions_id and inv.payment_term_id.sale_conditions_id.sequence or '01'
@@ -1195,6 +1207,13 @@ class AccountInvoiceElectronic(models.Model):
                     otros_cargos, currency_rate, invoice_comments,
                     tipo_documento_referencia, numero_documento_referencia,
                     fecha_emision_referencia, codigo_referencia, razon_referencia)
+
+                inv.total_service_gravado = round(total_servicio_gravado, 5)
+                inv.total_service_exento = round(total_servicio_exento, 5)
+                inv.total_service_exonerado = total_servicio_exonerado
+                inv.total_merchandise_gravado =round(total_mercaderia_gravado, 5)
+                inv.total_merchandise_exento = round(total_mercaderia_exento, 5)
+                inv.total_merchandise_exonerado =total_mercaderia_exonerado
 
                 xml_to_sign = str(xml_string_builder)
                 xml_firmado = api_facturae.sign_xml(
