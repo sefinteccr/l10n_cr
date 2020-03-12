@@ -622,7 +622,7 @@ def gen_xml_v43(inv, sale_conditions, total_servicio_gravado,
     sb.Append('<TotalComprobante>' + str(round(base_total + total_impuestos + totalOtrosCargos - total_iva_devuelto, 5)) + '</TotalComprobante>')
     sb.Append('</ResumenFactura>')
 
-    if vat == '4000042139' or inv.invoice_id and inv.reference_code_id and inv.reference_document_id:
+    if inv.tipo_documento != 'TE' or vat == '4000042139' or inv.invoice_id and inv.reference_code_id and inv.reference_document_id:
         sb.Append('<InformacionReferencia>')
         sb.Append('<TipoDoc>' + str(tipo_documento_referencia) + '</TipoDoc>')
         sb.Append('<Numero>' + str(numero_documento_referencia) + '</Numero>')
