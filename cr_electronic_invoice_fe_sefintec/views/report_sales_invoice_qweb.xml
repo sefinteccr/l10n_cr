@@ -380,8 +380,7 @@
                     </td>
                 </tr>
             </table>
-            <!--t t-if="o.type == 'in_invoice' or o.type == 'in_refund'"-->
-            <t t-if="o.type != 'out_invoice'">
+            <t t-if="o.type == 'in_invoice' or o.type == 'in_refund'">
                 <div class="rounded2">
                     <table width="100%;" cellpadding="0" cellspacing="0">
                         <tr class="text-center">
@@ -398,8 +397,7 @@
                 </div>
             </t>
 
-            <!--t t-if="o.type == 'out_invoice' or o.type == 'out_refund'"-->
-            <t t-if="o.type == 'out_invoice'">
+            <t t-if="o.type == 'out_invoice' or o.type == 'out_refund'">
                 <div class="rounded2">
                     <p style="font-size:14px;padding:2px;text-align:justify;">
                         Este documento constituye factura comercial con titulo ejecutivo de acuerdo al art. 460 del Código de Comercio
@@ -433,7 +431,7 @@
                 </div>
                 <p class="text-center" style="padding:2px 2px 2px 2px">
                   Clave:<span t-field="o.number_electronic"/> // Usuario:<span t-field="o.create_uid.name"/><br/>
-                  Autorizada mediante resolución No DGT-R-033-2019 del 20 de junio de 2019</p>
+                  Versión 4.3 - Autorizada mediante resolución No DGT-R-033-2019 del 20 de junio de 2019</p>
             </t>
             <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css"/>
             <style type="text/css">
