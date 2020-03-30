@@ -28,6 +28,7 @@ class PartnerElectronic(models.Model):
     activity_id = fields.Many2one("economic.activity", string="Actividad Económica por defecto", required=False, )
     economic_activities_ids = fields.Many2many('economic.activity', string=u'Actividades Económicas',)
     export = fields.Boolean(string="It's export", default=False)
+    has_reference_so = fields.Boolean(string="Referencia SO en Facturación", default=False)
 
     @api.onchange('phone')
     def _onchange_phone(self):

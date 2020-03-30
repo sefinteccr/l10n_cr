@@ -971,7 +971,7 @@ class AccountInvoiceElectronic(models.Model):
                     tipo_documento_referencia = inv.reference_document_id.code
                     codigo_referencia = inv.reference_code_id.code
                     razon_referencia = inv.reference_code_id.name
-                if inv.partner_id.vat == '4000042139':
+                if inv.partner_id.has_reference_so:
                     tipo_documento_referencia = 99
                     codigo_referencia = 99
                     fecha_emision_referencia = inv.date_issuance
