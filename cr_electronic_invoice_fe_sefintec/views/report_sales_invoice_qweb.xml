@@ -310,37 +310,37 @@
                                         <tr t-if="o.total_service_gravado != '0.0'" class="border-black o_subtotal" style="">
                                             <td><strong>Total Serv. Gravado</strong></td>
                                             <td class="text-right">
-                                                <span t-field="o.total_service_gravado"/>
+                                                <span t-field="o.total_service_gravado" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                                             </td>
                                         </tr>
                                         <tr t-if="o.total_service_exento != '0.0'" class="border-black o_subtotal" style="">
                                             <td><strong>Total Serv. Exento</strong></td>
                                             <td class="text-right">
-                                                <span t-field="o.total_service_exento"/>
+                                                <span t-field="o.total_service_exento" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                                             </td>
                                         </tr>
                                         <tr t-if="o.total_service_exonerado != '0.0'" class="border-black o_subtotal" style="">
                                             <td><strong>Total Serv. Exonerado</strong></td>
                                             <td class="text-right">
-                                                <span t-field="o.total_service_exonerado"/>
+                                                <span t-field="o.total_service_exonerado" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                                             </td>
                                         </tr>
                                         <tr t-if="o.total_merchandise_gravado != '0.0'" class="border-black o_subtotal" style="">
                                             <td><strong>Total Merc. Gravadas</strong></td>
                                             <td class="text-right">
-                                                <span t-field="o.total_merchandise_gravado"/>
+                                                <span t-field="o.total_merchandise_gravado" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                                             </td>
                                         </tr>
                                         <tr t-if="o.total_merchandise_exento != '0.0'" class="border-black o_subtotal" style="">
                                             <td><strong>Total Merc. Exentas</strong></td>
                                             <td class="text-right">
-                                                <span t-field="o.total_merchandise_exento"/>
+                                                <span t-field="o.total_merchandise_exento" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                                             </td>
                                         </tr>
                                         <tr t-if="o.total_merchandise_exonerado != '0.0'" class="border-black o_subtotal" style="">
                                             <td><strong>Total Merc. Exoneradas</strong></td>
                                             <td class="text-right">
-                                                <span t-field="o.total_merchandise_exonerado"/>
+                                                <span t-field="o.total_merchandise_exonerado" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                                             </td>
                                         </tr>
                                         <tr class="border-black o_subtotal" style="">
