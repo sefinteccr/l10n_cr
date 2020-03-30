@@ -299,12 +299,12 @@ class AccountInvoiceElectronic(models.Model):
 
     economic_activities_ids = fields.Many2many('economic.activity', string=u'Actividades Económicas', compute='_get_economic_activities')
 
-    total_service_gravado = fields.Char( readonly=True, required=False, )
-    total_service_exento = fields.Char( readonly=True, required=False, )
-    total_service_exonerado = fields.Char( readonly=True, required=False, )
-    total_merchandise_gravado = fields.Char( readonly=True, required=False, )
-    total_merchandise_exento = fields.Char( readonly=True, required=False, )
-    total_merchandise_exonerado = fields.Char(readonly=True, required=False, )
+    total_service_gravado = fields.Float( readonly=True, required=False, )
+    total_service_exento = fields.Float( readonly=True, required=False, )
+    total_service_exonerado = fields.Float( readonly=True, required=False, )
+    total_merchandise_gravado = fields.Float( readonly=True, required=False, )
+    total_merchandise_exento = fields.Float( readonly=True, required=False, )
+    total_merchandise_exonerado = fields.Float(readonly=True, required=False, )
     _sql_constraints = [
         ('number_electronic_uniq', 'unique (company_id, number_electronic)',
          "La clave de comprobante debe ser única"),
