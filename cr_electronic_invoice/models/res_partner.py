@@ -30,6 +30,7 @@ class PartnerElectronic(models.Model):
                                        column1='res_partner_id',
                                        column2='economic_activity_id',)
     export = fields.Boolean(string="It's export", default=False)
+    skipMH = fields.Boolean(string="Brincar MH", required=False, )
 
     @api.onchange('phone')
     def _onchange_phone(self):

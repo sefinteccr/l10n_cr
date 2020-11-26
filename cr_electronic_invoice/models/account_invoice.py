@@ -1327,7 +1327,7 @@ class AccountInvoiceElectronic(models.Model):
     def action_invoice_open(self):
         # Revisamos si el ambiente para Hacienda está habilitado
         for inv in self:
-            if inv.company_id.frm_ws_ambiente == 'disabled':
+            if inv.company_id.frm_ws_ambiente == 'disabled' or inv.partner_id.skipMH:
                 super(AccountInvoiceElectronic, inv).action_invoice_open()
                 inv.tipo_documento = None
                 continue
