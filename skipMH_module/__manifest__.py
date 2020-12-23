@@ -11,9 +11,8 @@
 		'''
 		Skip MH
 		''',
-	'depends': ['cr_electronic_invoice'],
-	'data': [
-		'views/res_partner_views.xml',
-	],
+	'depends': ['cr_electronic_invoice','point_of_sale'],
+	'data': ['views/res_partner_views.xml','views/pos_templates.xml'],
+	'qweb': ['static/src/xml/*.xml'],
 	'installable': True,
 }
