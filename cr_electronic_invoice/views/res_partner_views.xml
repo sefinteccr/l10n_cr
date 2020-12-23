@@ -77,7 +77,6 @@
                     <field name="category_id" position="after">
                         <field name="has_exoneration" attrs="{'invisible': [('customer', '!=', True)]}" />
                         <field name="export" attrs="{'invisible': [('customer', '!=', True)]}" />
-                        <field name="skipMH" attrs="{'invisible': [('customer', '!=', True)]}"/>
                     </field>
                 </data>
                 <xpath expr="//page[3]" position="after">
