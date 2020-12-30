@@ -13,7 +13,7 @@
                     </t>
                 </select>
                 <span class='label'>Brincar MH</span>
-                <input type="checkbox" t-as="skipMH" t-att-value="partner.skipMh"></input>
+                <input type="checkbox" t-as="skipMH" t-att-checked="partner.skipMH"></input>
             </div>
         </t>
     </t>
