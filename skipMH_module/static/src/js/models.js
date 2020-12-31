@@ -7,7 +7,7 @@ odoo.define('skipMH_module.models', function (require) {
     models.PosModel = models.PosModel.extend({
         initialize: function (attributes, options) {
             pos_super.initialize.apply(this, arguments);
-            console.log(self.partners);
+            console.log(self.partner);
             return this
         }
     });
@@ -20,7 +20,6 @@ odoo.define('skipMH_module.models', function (require) {
             model:  'identification.type',
             fields: ['name'],
             loaded: function(self,identifications){
-                console.log(identifications)
                 self.identifications = identifications;
             },
         }

@@ -12,8 +12,7 @@
                         </option>
                     </t>
                 </select>
-                <span class='label'>Brincar MH</span>
-                <input type="checkbox" t-as="skipMH" t-att-checked="partner.skipMH"></input>
+                <button t-attf-class='button js_invoice #{ partner.skipMH ? "highlight" : ""} '>Brincar MH</button>
             </div>
         </t>
     </t>
