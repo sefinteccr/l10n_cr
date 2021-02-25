@@ -12,7 +12,10 @@
                         </option>
                     </t>
                 </select>
-                <button t-attf-class='button js_invoice #{ partner.skipMH ? "highlight" : ""} '>Brincar MH</button>
+
+                <div t-attf-class='button js_skipMH #{ partner.skipMH ? "highlight" : ""} '>
+                    <i class='fa fa-file-text-o' /> Brincar MH
+                </div>
             </div>
         </t>
     </t>
