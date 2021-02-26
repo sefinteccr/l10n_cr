@@ -478,6 +478,7 @@ class PosOrder(models.Model):
                 base_subtotal = 0.0
                 total_otros_cargos = 0.0
                 total_iva_devuelto = 0.0
+                _no_CABYS_code = False
                 for line in doc.lines:
                     line_number += 1
                     price = line.price_unit * (1 - line.discount / 100.0)

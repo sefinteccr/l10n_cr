@@ -1041,6 +1041,7 @@ class AccountInvoiceElectronic(models.Model):
                 total_impuestos = 0.0
                 base_subtotal = 0.0
                 _old_rate_exoneration = False
+                _no_CABYS_code = False
                 
                 for inv_line in inv.invoice_line_ids:
                     # Revisamos si está línea es de Otros Cargos
