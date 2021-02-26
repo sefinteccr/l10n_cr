@@ -13,7 +13,7 @@ var skipMHScreenWidget = screens.ScreenWidget.extend({
         debugger;
         var partner = this.partner.skipMH;
         order.set_to_invoice(!order.is_to_invoice());
-        if (order.is_to_invoice()) {
+        if (partner) {
             this.$('.js_skipMH').addClass('highlight');
         } else {
             this.$('.js_skipMH').removeClass('highlight');
@@ -22,7 +22,12 @@ var skipMHScreenWidget = screens.ScreenWidget.extend({
     renderElement: function() {
         var self = this;
         this._super();
-        this.$('.js_skipMH').click(function(){
+        this.$('skipMH').click(function(){
+            debugger;
+            self.click_skipMH();
+        });
+        this.$('allowcredit').click(function(){
+            debugger;
             self.click_skipMH();
         });
     }

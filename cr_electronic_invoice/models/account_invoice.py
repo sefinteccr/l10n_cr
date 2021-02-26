@@ -1102,11 +1102,17 @@ class AccountInvoiceElectronic(models.Model):
                         if inv_line.product_id:
                             line["codigo"] = inv_line.product_id.default_code or ''
                             line["codigoProducto"] = inv_line.product_id.code or ''
-                            
+
                             if inv_line.product_id.cabys_code:
                                 line["codigoCabys"] = inv_line.product_id.cabys_code
                             elif inv_line.product_id.categ_id and inv_line.product_id.categ_id.cabys_code:
                                 line["codigoCabys"] = inv_line.product_id.categ_id.cabys_code
+                            else:
+                                _no_CABYS_code = 'Aviso!.\nLinea sin código CABYS: %s' % inv_line.name
+                                continue
+                        else:
+                            _no_CABYS_code = 'Aviso!.\nLinea sin código CABYS: %s' % inv_line.name
+                            continue
 
                         if inv.tipo_documento == 'FEE' and inv_line.tariff_head:
                             line["partidaArancelaria"] = inv_line.tariff_head
@@ -1234,6 +1240,12 @@ class AccountInvoiceElectronic(models.Model):
                 # TODO: CORREGIR BUG NUMERO DE FACTURA NO SE GUARDA EN LA REFERENCIA DE LA NC CUANDO SE CREA MANUALMENTE
                 if not inv.origin:
                     inv.origin = inv.invoice_id.display_name
+
+                if _no_CABYS_code and inv.tipo_documento != 'NC':  # CAByS is not required for financial NCs
+                    inv.message_post(
+                        subject='Error',
+                        body=_no_CABYS_code)
+                    continue
 
                 if _old_rate_exoneration:
                     inv.state_tributacion = 'error'

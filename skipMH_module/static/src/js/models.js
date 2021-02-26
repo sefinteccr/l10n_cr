@@ -7,13 +7,12 @@ odoo.define('skipMH_module.models', function (require) {
     models.PosModel = models.PosModel.extend({
         initialize: function (attributes, options) {
             pos_super.initialize.apply(this, arguments);
-            console.log(self.partner);
             return this
         }
     });
 
     models.load_fields('res.company', ['street', 'city', 'state_id', 'zip']);
-    models.load_fields('res.partner', ['identification_id','skipMH'])
+    models.load_fields('res.partner', ['identification_id','skipMH', 'allow_credit'])
 
     models.load_models([
         {
