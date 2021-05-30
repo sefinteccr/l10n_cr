@@ -948,8 +948,8 @@ class AccountInvoiceElectronic(models.Model):
         for inv in invoices:
             current_invoice += 1
 
-            if not inv.sequence or not inv.sequence.isdigit():  # or (len(inv.number) == 10):
-                inv.state_tributacion = 'na'
+            if not inv.sequence or not inv.sequence.isdigit() or inv.company_id.frm_ws_ambiente == 'disabled' or \
+                    inv.company_id.date_expiration_sign < datetime.datetime.now():  # or (len(inv.number) == 10):
                 _logger.info('E-INV CR - Ignored invoice:%s', inv.number)
                 continue
 

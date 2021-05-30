@@ -403,7 +403,7 @@ class PosOrder(models.Model):
     @api.model
     def _validahacienda_pos(self, max_orders=10, no_partner=True):  # cron
         pos_orders = self.env['pos.order'].search([('state', 'in', ('paid', 'done', 'invoiced')),
-                                                   '|', (no_partner, '=', True), 
+                                                   '|', (no_partner, '=', True),
                                                         '&', ('partner_id', '!=', False), ('partner_id.vat', '!=', False),
                                                    ('tipo_documento', 'in', ('TE','FE','NC')),
                                                    ('state_tributacion', '=', False)],
@@ -418,10 +418,10 @@ class PosOrder(models.Model):
             _logger.info('MAB - Valida Hacienda - POS Order: "%s"  -  %s / %s',
                           doc.number_electronic, current_order, total_orders)
             docName = doc.number_electronic
-            if not docName or not docName.isdigit() or doc.company_id.frm_ws_ambiente == 'disabled':
+            if not docName or not docName.isdigit() or doc.company_id.frm_ws_ambiente == 'disabled' or \
+                    doc.company_id.date_expiration_sign < datetime.datetime.now():
                 _logger.error(
                     'MAB - Valida Hacienda - skipped Invoice %s', docName)
-                doc.state_tributacion = 'no_aplica'
                 continue
             now_utc = datetime.datetime.now(pytz.timezone('UTC'))
             now_cr = now_utc.astimezone(pytz.timezone('America/Costa_Rica'))
@@ -481,28 +481,30 @@ class PosOrder(models.Model):
                 _no_CABYS_code = False
                 for line in doc.lines:
                     line_number += 1
-                    price = line.price_unit * (1 - line.discount / 100.0)
+                    descuento = 0.0
                     qty = abs(line.qty)
                     if not qty:
                         continue
+                    if line.discount:
+                        if line.discount <= 100:
+                            descuento = abs(round(line.price_unit * (line.discount/100), 5))
+                        else:
+                            descuento = line.discount
+
+                    price = line.price_unit - descuento
                     fpos = line.order_id.fiscal_position_id
                     tax_ids = fpos.map_tax(
                         line.tax_ids, line.product_id, line.order_id.partner_id) if fpos else line.tax_ids
                     line_taxes = tax_ids.compute_all(
                         price, line.order_id.pricelist_id.currency_id, 1, product=line.product_id, partner=line.order_id.partner_id)
-                    if line.discount != 100:
-                        price_unit = round(
-                            line_taxes['total_excluded'] / (1 - line.discount / 100.0), 5)
-                    else:
-                        price_unit = 0
-                    base_line = abs(round(price_unit * qty, 5))
+                    base_line = abs(round(line.price_unit * qty, 5))
                     subtotal_line = abs(
-                        round(price_unit * qty * (1 - line.discount / 100.0), 5))
+                        round(price * qty, 5))
                     dline = {
                         "cantidad": qty,
                         "unidadMedida": line.product_id and line.product_id.uom_id.code or 'Sp',
                         "detalle": escape(line.product_id.name[:159]),
-                        "precioUnitario": price_unit,
+                        "precioUnitario": line.price_unit ,
                         "montoTotal": base_line,
                         "subtotal": subtotal_line,
                     }
@@ -516,9 +518,8 @@ class PosOrder(models.Model):
                         continue
 
                     if line.discount:
-                        descuento = abs(round(base_line - subtotal_line, 5))
-                        total_descuento += descuento
-                        dline["montoDescuento"] = descuento
+                        total_descuento += descuento * qty
+                        dline["montoDescuento"] = descuento * qty
                         dline["naturalezaDescuento"] = 'Descuento Comercial'
 
                     taxes = dict()
@@ -528,7 +529,7 @@ class PosOrder(models.Model):
                         taxes_lookup = {}
                         for i in tax_ids:
                             taxes_lookup[i.id] = {
-                                'tax_code': i.tax_code, 
+                                'tax_code': i.tax_code,
                                 'tarifa': i.amount,
                                 'iva_tax_desc': i.iva_tax_desc,
                                 'iva_tax_code': i.iva_tax_code}
