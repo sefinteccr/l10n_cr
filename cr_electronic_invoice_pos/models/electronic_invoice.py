@@ -497,14 +497,16 @@ class PosOrder(models.Model):
                         line.tax_ids, line.product_id, line.order_id.partner_id) if fpos else line.tax_ids
                     line_taxes = tax_ids.compute_all(
                         price, line.order_id.pricelist_id.currency_id, 1, product=line.product_id, partner=line.order_id.partner_id)
-                    base_line = abs(round(line.price_unit * qty, 5))
+                    price_unit = round(
+                        line_taxes['total_excluded'] + descuento)
+                    base_line = abs(round(price_unit * qty, 5))
                     subtotal_line = abs(
-                        round(price * qty, 5))
+                        round((price_unit - descuento) * qty, 5))
                     dline = {
                         "cantidad": qty,
                         "unidadMedida": line.product_id and line.product_id.uom_id.code or 'Sp',
                         "detalle": escape(line.product_id.name[:159]),
-                        "precioUnitario": line.price_unit ,
+                        "precioUnitario": price_unit,
                         "montoTotal": base_line,
                         "subtotal": subtotal_line,
                     }
