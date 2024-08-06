@@ -5,7 +5,7 @@
         <div class="pos">
             <div class="pos-topheader">
                 <div class="pos-branding">
-                    <img class="pos-logo" src="/point_of_sale/static/src/img/logo.png" />
+                    <img class="pos-logo" src="/zayqui_utils/static/src/img/logo.png" />
                     <span class="placeholder-UsernameWidget"></span>
                 </div>
                 <div class="pos-rightheader">
