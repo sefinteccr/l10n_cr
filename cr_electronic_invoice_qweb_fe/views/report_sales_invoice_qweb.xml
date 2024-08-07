@@ -156,12 +156,7 @@
                         <td>
                             <span t-field="o.partner_id.vat"/>
                         </td>
-                        <td>
-                            <strong>CONDICIÓN VENTA:</strong>
-                        </td>
-                        <td>
-                            <span t-esc="o.payment_term_id and o.payment_term_id.name or 'CONTADO'"/>
-                        </td>
+                        
                     </tr>
                     <tr style="border:1px solid black;">
                         <td>
