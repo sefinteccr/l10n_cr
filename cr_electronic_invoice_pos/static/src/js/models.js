@@ -91,6 +91,7 @@ odoo.define('cr_electronic_invoice_pos.models', function (require) {
             //debugger;
             //return PosModelParent.push_order.call(order,opts);
             return PosModelParent.push_order.apply(this, arguments);
+        }
     });
 
     var OrderParent = models.Order.prototype;
