@@ -29,8 +29,17 @@
 
         <record id="cr_electronic_invoice.Identificationtype_05" model="identification.type">
             <field name="code">05</field>
-            <field name="name">Extranjero</field>
-            <field name="notes">Número de identificación en caso de que el receptor sea un extranjero. Máximo 20 caracteres</field>
+            <field name="name">Extranjero No Domiciliado</field>
+            <field name="notes"> Este tipo de identificación estará disponible en los Datos del Emisor de la Factura Electrónica de Compra únicamente para el registro de las adquisiciones de servicios o bienes intangibles a proveedores no domiciliados en Costa Rica, según el artículo 29 inciso d) y el Transitorio XV del Reglamento del IVA.
+            En Factura Electrónica, estará disponible en los Datos del Receptor, únicamente cuando en el campo “Condición de la Venta” se haya seleccionado el código 12 “Ventas de Bienes No Nacionalizados”
+            Este código también estará habilitado para su uso en la Factura Electrónica de Exportación y Tiquete Electrónico.
+        </field>
+        </record>
+
+        <record id="cr_electronic_invoice.Identificationtype_06" model="identification.type">
+            <field name="code">06</field>
+            <field name="name">No Contribuyente</field>
+            <field name="notes"> Este tipo de identificación estará disponible en los Datos del Emisor de la Factura Electrónica de Compra únicamente para el registro de las adquisiciones de bienes usados vendidos por un no contribuyente para los efectos contables que corresponda. Estará disponible únicamente cuando en el campo “Condición de la Venta” se haya seleccionado el código 13 “Ventas Bienes Usados No Contribuyentes”</field>
         </record>
 
     </data>

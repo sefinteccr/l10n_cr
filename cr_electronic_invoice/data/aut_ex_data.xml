@@ -2,9 +2,10 @@
 <odoo>
     <data noupdate="0">
 
-        <record id="cr_electronic_invoice.AutEx_1" model="aut.ex">
+        <record id="cr_electronic_invoice.AutEx_1" 
+            model="aut.ex">
             <field name="code">01</field>
-            <field name="name">Compras autorizadas</field>
+            <field name="name">Compras autorizadas por la Dirección General de Tributación</field>
             <field name="active" 
                 eval="True"/>
         </record>
@@ -28,7 +29,7 @@
         <record id="cr_electronic_invoice.AutEx_4" 
             model="aut.ex">
             <field name="code">04</field>
-            <field name="name">Exenciones Dirección General de Hacienda</field>
+            <field name="name">Exenciones Dirección General de Hacienda Autorización Local Genérica</field>
             <field name="active" 
                 eval="True"/>
         </record>
@@ -36,7 +37,7 @@
         <record id="cr_electronic_invoice.AutEx_5" 
             model="aut.ex">
             <field name="code">05</field>
-            <field name="name">Transitorio V</field>
+            <field name="name">Exenciones Dirección General de Hacienda Transitorio V (servicios de ingeniería, arquitectura, topografía obra civil)</field>
             <field name="active" 
                 eval="True"/>
         </record>
@@ -44,7 +45,7 @@
         <record id="cr_electronic_invoice.AutEx_6" 
             model="aut.ex">
             <field name="code">06</field>
-            <field name="name">Transitorio IX</field>
+            <field name="name">Servicios turísticos inscritos ante el Instituto Costarricense de Turismo (ICT)</field>
             <field name="active" 
                 eval="True"/>
         </record>
@@ -52,9 +53,37 @@
         <record id="cr_electronic_invoice.AutEx_7" 
             model="aut.ex">
             <field name="code">07</field>
-            <field name="name">Transitorio XVII</field>
+            <field name="name">Transitorio XVII (Recolección, Clasificación, almacenamiento de Reciclaje y reutilizable</field>
             <field name="active" 
                 eval="True"/>
+        </record>
+
+        <record id="cr_electronic_invoice.AutEx_8"
+            model="aut.ex">
+            <field name="code">08</field>
+            <field name="name">Exoneración a Zona Franca</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="cr_electronic_invoice.AutEx_9"
+            model="aut.ex">
+            <field name="code">09</field>
+            <field name="name">Exoneración de servicios complementarios para la exportación articulo 11 RLIVA</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="cr_electronic_invoice.AutEx_10"
+            model="aut.ex">
+            <field name="code">10</field>
+            <field name="name">Órgano de las corporaciones municipales</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="cr_electronic_invoice.AutEx_11"
+            model="aut.ex">
+            <field name="code">11</field>
+            <field name="name">Exenciones Dirección General de Hacienda Autorización de Impuesto Local Concreta</field>
+            <field name="active" eval="True"/>
         </record>
 
         <record id="cr_electronic_invoice.AutEx_99" 

@@ -20,5 +20,9 @@
         <menuitem id="menu_economic_activity" name="Actividad Económica" parent="menu_electronic_invoice"
                   sequence="8" action="action_economic_activity"/>
 
+        <menuitem id="menu_discount_code" name="Discount Code" parent="menu_electronic_invoice" 
+                  sequence="9" action="action_discount_code"/>
+
+
     </data>
 </odoo>

@@ -3,8 +3,30 @@
 
     <!-- Mail template are declared in a NOUPDATE block
          so users can freely customize/delete them -->
-    <data noupdate="1">
+    <data noupdate="0">
         <!--Email template -->
+        <record id="email_template_edi_expiration_notice" model="mail.template">
+            <field name="name">Key Expiration Notice</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="email_from">${('"%s" &lt;%s&gt;' % (object.company_id.name, object.company_id.email))|safe}</field>
+            <field name="email_to">${object.email_formatted | safe}</field>
+            <field name="subject">NOTIFICACIÓN IMPORTANTE!!</field>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="user_signature" eval="False"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html" type="xml">
+                <div style="margin: 0px; padding: 0px;">
+                
+                    <h1>NOTIFICACIÓN IMPORTANTE!!</h1>
+
+                    <p>
+                        ${object.company_id.get_message_to_send()}
+                    </p>
+
+                </div>
+            </field>
+        </record>
+
         <record id="email_template_invoice_vendor" model="mail.template">
             <field name="name">Invoicing: Vendor Invoice email</field>
             <field name="email_from">${(object.user_id.email and '&quot;%s&quot; &lt;%s&gt;' % (object.user_id.name, object.user_id.email) or '')|safe}</field>
@@ -47,7 +69,7 @@
                     <br />
                     <strong>Confirmation Message: </strong> ${object.state_invoice_partner}
                     <br />
-                    <strong>"Hacienda" status: </strong> ${object.state_send_invoice}
+                    <strong>"Hacienda" status: </strong> ${object.state_tributacion}
 
                     <br /><br />
                     <strong>Issuing company </strong>
@@ -83,30 +105,28 @@
             <field name="model_id" ref="base.model_res_partner"/>
             <field name="auto_delete" eval="True"/>
             <field name="body_html">
-			<![CDATA[
-				<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
-					<p>Dear ${object.name},</p>
-					<p>
-					We realized that your VAT exoneration number ${object.exoneration_number} is expired. Please update this information as soon as possible or we'll have to create new invoices including this tax.
-					</p>
-					<br/>
-					<p>
-					Thanks for all your help.
-					</p>
-					<br/>
-					Best Regards,
-
-					<br/>
-					<br/>
-					${user.name}
-
-					<br/>
-					<br/>
-					${object.get_followup_table_html() | safe}
-					<br/>
-				</div>
+            <![CDATA[
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+                    <p>Dear ${object.name},</p>
+                    <p>
+                    We realized that your VAT exoneration number ${object.exoneration_number} is expired. Please update this information as soon as possible or we'll have to create new invoices including this tax.
+                    </p>
+                    <br/>
+                    <p>
+                    Thanks for all your help.
+                    </p>
+                    <br/>
+                    Best Regards,
+                    <br/>
+                    <br/>
+                    ${user.name}
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
             ]]>
-			</field>
+            </field>
+            <!--                    ${object.get_followup_table_html() | safe}-->
         </record>
     </data>
 </odoo>

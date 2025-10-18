@@ -14,7 +14,34 @@
                 <div class="client-detail">
                     <span class="label">Phone</span>
                     <input class="detail client-phone" name="phone" t-att-value="partner.phone || &quot;&quot;" type="tel"/>
+                </div> 
+                <div t-attf-class="client-detail ">
+                    <span class="label">Actividad Económica</span>
+                    <select class="detail economic-activity" name="activity_id" id="economic_activity_select">
+                        <t t-if="partner.economic_activities_ids">
+                            <t t-foreach="widget.pos.economic_activities" t-as="activity">
+                                <t t-if="partner.economic_activities_ids.includes(activity.id)">
+                                    <option t-att-selected="partner.activity_id ? (activity.id === partner.activity_id[0] ? true : undefined) : undefined"
+                                            t-att-value="activity.id">
+                                        <t t-esc="activity.code"/>-<t t-esc="activity.name"/>
+                                    </option>
+                                </t>
+                            </t>
+                        </t>
+                        <t t-elif="!partner.economic_activities_ids">
+                            <option value="">Seleccione actividad</option>
+                        </t>
+                    </select>
+                    <div class="">
+                        <button type="button" class="oe_button oe_highlight"
+                                style="float: right; margin-top: -30px;"
+                                onclick="consultarActividadEconomica(document.getElementById('vat') ? document.getElementById('vat').value : '')">
+                            Consultar
+                        </button>
+                    </div>
                 </div>
+                <input class="detail economic-activitys-codes" hidden="hidden" name="economic_activities_ids" t-att-value="partner.economic_activities_ids || &quot;&quot;"/>
+
                 <div class="client-detail">
                     <span class="label">Barcode</span>
                     <input class="detail barcode" name="barcode" t-att-value="partner.barcode || &quot;&quot;"/>
@@ -33,7 +60,7 @@
         </t>
         <t t-jquery="div.client-picture" t-operation="after">
             <input class="detail client-name" id="vat" name="vat" onchange="obtener_nombre(this.value)" placeholder="Cédula" t-att-value="partner.vat"/>
-            <input class="detail" id="identification_id" hidden="hidden" name="identification_id"  t-att-value="ninguno"/>
+            <input type="number" class="detail" id="identification_id" hidden="hidden" name="identification_id"  t-att-value="ninguno"/>
         </t>
         <t t-jquery="div.client-details-box" t-operation="before">
             <div class="client-detail">
@@ -42,4 +69,38 @@
             </div>
         </t>
     </t>
+    <t t-extend="ClientDetails">
+        <t t-jquery=".client-details-left" t-operation="append">
+            <div class="client-detail">
+                <span class="label">Actividad Económica</span>
+                <t t-if="partner.activity_id">
+                    <t t-foreach="widget.pos.economic_activities" t-as="activity">
+                        <t t-if="activity.id === partner.activity_id[0]">
+                            <span class="detail activity-id"><t t-esc="activity.code"/>-<t t-esc="activity.name"/></span>
+                        </t>
+                    </t>
+                </t>
+                <t t-if="!partner.activity_id || !partner.activity_id.length">
+                    <span class="detail activity-id empty">N/A</span>
+                </t>
+            </div>
+        </t>
+    </t>
+
+    <t t-extend="PaymentScreenWidget">
+        <t t-jquery="div.js_set_customer" t-operation="after">
+            <div id="economic_activity_container"
+                style="margin-top:8px; font-size:14px; display:none;">
+                <span style="display:block; font-weight:bold; margin-bottom:2px;">
+                    Actividad Económica
+                </span>
+                <select class="detail economic-activity"
+                        name="activity_id"
+                        id="economic_activity_select"
+                        style="width:100%; padding:4px; border-radius:4px; border:1px solid #ccc;">
+                </select>
+            </div>
+        </t>
+    </t>
+
 </templates>

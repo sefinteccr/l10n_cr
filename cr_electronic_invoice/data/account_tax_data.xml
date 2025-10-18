@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="0">
+    <data noupdate="1">
 
         <!-- Account Tax Group -->
         <record id="tax_group_IVA0" model="account.tax.group">
@@ -88,7 +88,7 @@
             <field name="description">IVA 0% </field>
             <field name="sequence">10</field>
             <field name="iva_tax_desc">Tarifa 0%</field>
-            <field name="iva_tax_code">01</field>
+            <field name="iva_tax_code">10</field>
         </record>
 
         <record id="iva_tax_00" model="account.tax">
@@ -100,7 +100,7 @@
             <field name="description">IVA 0%</field>
             <field name="sequence">10</field>
             <field name="iva_tax_desc">Tarifa 0%</field>
-            <field name="iva_tax_code">01</field>
+            <field name="iva_tax_code">10</field>
         </record>
 
         <record id="iva_tax_00_ND" model="account.tax">
@@ -111,7 +111,7 @@
             <field name="description">IVA 0% (No deducible)</field>
             <field name="sequence">10</field>
             <field name="iva_tax_desc">Tarifa 0% (No deducible)</field>
-            <field name="iva_tax_code">01</field>
+            <field name="iva_tax_code">11</field>
             <field name="tax_group_id" ref="tax_group_IVA_ND"/>
             <field name="non_tax_deductible">True</field>
         </record>
@@ -360,7 +360,7 @@
             <field name="sequence">10</field>
             <field name="iva_tax_desc">Transitorio 8%</field>
             <field name="iva_tax_code">07</field>
-        </record>z
+        </record>
 
         <record id="iva_tax_14_ND" model="account.tax">
             <field name="tax_code">01</field>

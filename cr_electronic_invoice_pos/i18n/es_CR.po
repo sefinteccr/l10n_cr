@@ -107,7 +107,7 @@ msgstr ""
 #. module: cr_electronic_invoice_pos
 #: model_terms:ir.ui.view,arch_db:cr_electronic_invoice_pos.pos_order_report
 msgid "<br/>\n"
-"                            Versión Documento: 4.3<br/>"
+"                            Versión Documento: 4.4<br/>"
 msgstr ""
 
 #. module: cr_electronic_invoice_pos
@@ -398,7 +398,7 @@ msgstr "Rechazado2"
 
 #. module: cr_electronic_invoice_pos
 #: model_terms:ir.ui.view,arch_db:cr_electronic_invoice_pos.pos_order_report
-msgid "Res DGT-R-033-2019 del 20 / 06 / 2019"
+msgid "Autorizada mediante resolución No MH-DGT-RES-0027-2024 del 19 de noviembre de 2024 Versión: 4.4"
 msgstr ""
 
 #. module: cr_electronic_invoice_pos

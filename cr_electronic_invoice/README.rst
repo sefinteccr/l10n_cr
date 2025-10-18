@@ -25,7 +25,7 @@ Facturación electrónica Costa Rica
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
 
-Módulo para Odoo que implementa la Facturacion Electronica para Costa Rica actualmente en versión 4.3
+Módulo para Odoo que implementa la Facturacion Electronica para Costa Rica actualmente en versión 4.4
 
 - Agrega la generación de los archivos requeridos por el Ministerio de Hacienda al momento de generar una factura
 - Comunicación con el API de Tributación para la presentación de las facturas y su validación

@@ -6,7 +6,7 @@ Para ayuda y soporte la comunidad de Odoo CR cuenta con un grupo en Telegram: ht
 
 ### Localización de Costa Rica para Odoo que incluye:
 
-- Facturación electrónica para Costa Rica [4.3](https://www.hacienda.go.cr/ATV/ComprobanteElectronico/frmAnexosyEstructuras.aspx)
+- Facturación electrónica para Costa Rica [4.4](https://www.hacienda.go.cr/ATV/ComprobanteElectronico/frmAnexosyEstructuras.aspx)
 
 #### Debe hacer clone del branch con la versión de Odoo que desea utilizar. 
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- discount codes -->
+    <record id="DiscountCode_1" model="discount.code">
+        <field name="code">01</field>
+        <field name="name">Descuento por Regalía</field>
+        <field name="active">true</field>
+    </record>
+
+    <record id="DiscountCode_2" model="discount.code">
+        <field name="code">02</field>
+        <field name="name">Descuento por Regalía IVA Cobrado al Cliente</field>
+        <field name="active">true</field>
+    </record>
+
+    <record id="DiscountCode_3" model="discount.code">
+        <field name="code">03</field>
+        <field name="name">Descuento por Bonificación</field>
+        <field name="active">true</field>
+    </record>
+
+    <record id="DiscountCode_4" model="discount.code">
+        <field name="code">04</field>
+        <field name="name">Descuento por volumen</field>
+        <field name="active">true</field>
+    </record>
+
+    <record id="DiscountCode_5" model="discount.code">
+        <field name="code">05</field>
+        <field name="name">Descuento por Temporada (estacional)</field>
+        <field name="active">true</field>
+    </record>
+
+    <record id="DiscountCode_6" model="discount.code">
+        <field name="code">06</field>
+        <field name="name">Descuento promocional</field>
+        <field name="active">true</field>
+    </record>
+
+    <record id="DiscountCode_7" model="discount.code">
+        <field name="code">07</field>
+        <field name="name">Descuento Comercial</field>
+        <field name="active">true</field>
+    </record>
+
+    <record id="DiscountCode_8" model="discount.code">
+        <field name="code">08</field>
+        <field name="name">Descuento por frecuencia</field>
+        <field name="active">true</field>
+    </record>
+
+    <record id="DiscountCode_9" model="discount.code">
+        <field name="code">09</field>
+        <field name="name">Descuento sostenido</field>
+        <field name="active">true</field>
+    </record>
+
+    <record id="DiscountCode_99" model="discount.code">
+        <field name="code">99</field>
+        <field name="name">Otros descuentos</field>
+        <field name="active">true</field>
+    </record>
+
+</odoo>

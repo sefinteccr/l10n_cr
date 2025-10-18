@@ -18,7 +18,6 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  ******************************************************************************/
-
 odoo.define('cr_electronic_invoice_pos.models', function (require) {
     "use strict";
 
@@ -66,26 +65,24 @@ odoo.define('cr_electronic_invoice_pos.models', function (require) {
                 model: 'ir.sequence',
                 fields: [],
                 ids:    function(self){ return [self.config.FE_sequence_id[0],self.config.TE_sequence_id[0]]; },
-                loaded: function(self, sequence){ self.FE_sequence = sequence[0];self.TE_sequence = sequence[1]; },
+                loaded: function(self, sequence){ self.FE_sequence = sequence[0]; self.TE_sequence = sequence[1]; },
             });
             //debugger;
             return PosModelParent.load_server_data.apply(this, arguments);
         },
         push_order: function(order, opts) {
             //debugger;
-            if (order !== undefined) {
-                // revisar si es normal o devolucion . Pendiente !!!
+            var self = this;
+            if (order) {
                 if (order.get('client') && order.get('client').vat) {
-                    if (!order.get('client').skipMH){
-                        order.set({'sequence': this.FE_sequence.number_next_actual});
-                        order.set({'number_electronic': _sequence_next(this.FE_sequence)});
-                        order.set({'tipo_documento': 'FE'});
-                    }
-                }
-                else{
-                    order.set({'sequence': this.TE_sequence.number_next_actual});
-                    order.set({'number_electronic': _sequence_next(this.TE_sequence)});
-                    order.set({'tipo_documento': 'TE'});
+                    order.set_sequence(this.FE_sequence.number_next_actual);
+                    order.set_number_electronic(_sequence_next(this.FE_sequence));
+                    order.set_tipo_documento('FE');
+
+                } else {
+                    order.set_sequence(this.TE_sequence.number_next_actual);
+                    order.set_number_electronic(_sequence_next(this.TE_sequence));
+                    order.set_tipo_documento('TE');
                 }
             };
             //debugger;
@@ -96,22 +93,48 @@ odoo.define('cr_electronic_invoice_pos.models', function (require) {
 
     var OrderParent = models.Order.prototype;
     models.Order = models.Order.extend({
-        export_for_printing: function(attributes){
+        export_for_printing: function(){
             var order = OrderParent.export_for_printing.apply(this, arguments);
-            order['number_electronic'] = this.get('number_electronic');
-            order['sequence'] = this.get('sequence');
-            order['tipo_documento'] = this.get('tipo_documento');
+            order.number_electronic = this.get_number_electronic();
+            order.sequence = this.get_sequence();
+            order.tipo_documento = this.get_tipo_documento();
+            order.economic_activity_id = this.get_economic_activity_id();
             //debugger;
             return order;
         },
         export_as_JSON: function() {
             var order = OrderParent.export_as_JSON.apply(this, arguments);
-            order['number_electronic'] = this.get('number_electronic');
-            order['sequence'] = this.get('sequence');
-            order['tipo_documento'] = this.get('tipo_documento');
+            order.number_electronic = this.get_number_electronic();
+            order.sequence = this.get_sequence();
+            order.tipo_documento = this.get_tipo_documento();
+            order.economic_activity_id = this.get_economic_activity_id();
             //debugger;
             return order;
-        }
+        },
+        set_number_electronic: function (number_electronic) {
+            this.number_electronic = number_electronic;
+        },
+        get_number_electronic: function () {
+            return this.number_electronic;
+        },
+        set_sequence: function (sequence) {
+            this.sequence = sequence;
+        },
+        get_sequence: function () {
+            return this.sequence;
+        },
+        set_tipo_documento: function (tipo_documento) {
+            this.tipo_documento = tipo_documento;
+        },
+        get_tipo_documento: function () {
+            return this.tipo_documento;
+        },
+        set_economic_activity_id: function (economic_activity_id) {
+            this.economic_activity_id = economic_activity_id;
+        },
+        get_economic_activity_id: function () {
+            return this.economic_activity_id;
+        },
     });
 
     //models.load_fields('res.company', ['street', 'city', 'state_id', 'zip']);

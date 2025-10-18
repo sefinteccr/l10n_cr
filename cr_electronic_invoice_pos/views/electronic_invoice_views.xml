@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <record id="view_pos_order_tree" model="ir.ui.view">
+            <field name="name">pos.order.tree</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_order_tree"/>
+            <field name="arch" type="xml">
+                <field name="amount_total" position="after">
+                    <field name="statement_ids" widget="many2many_tags"/>
+                </field>
+            </field>
+        </record>
         <record id="view_account_journal_pos_electronic_invoice_form" model="ir.ui.view">
             <field name="name">account.journal.pos.electronic.invoice.form</field>
             <field name="model">account.journal</field>
             <field name="inherit_id" ref="point_of_sale.view_account_journal_pos_user_form"/>
             <field name="arch" type="xml">
-                <field name="amount_authorized_diff" position="after">
+                <field name="journal_user" position="after">
                     <field name="payment_method_id"/>
                 </field>
             </field>
@@ -78,6 +88,9 @@
                 <field name="name" position="after">
                     <field name="number_electronic" readonly="1"/>
                 </field>
+                <field name="fiscal_position_id" position="after">
+                    <field name="activity_id" readonly="1"/>
+                </field>
                 <field name="date_order" position="after">
                     <field name="date_issuance" readonly="1"/>
                 </field>
@@ -126,34 +139,38 @@
             </field>
         </record>
 
+        <record id="action_clean_state_tributation" model="ir.actions.server">
+            <field name="name">Clean State Tributation</field>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="model_id" ref="point_of_sale.model_pos_order"/>
+            <field name="binding_model_id" ref="point_of_sale.model_pos_order"/>
+            <field name="code">records.clean_state_FE()</field>
+        </record>
+
     <template id="pos_order_report">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">
                     <div class="page">
+                         <style>
+                        .table th, .table td {
+                            padding:0.2rem;
+                            border-top:0px;
+                        }
+                        </style>
                         <div class="text-center">
                             <t t-if="o.tipo_documento=='FE'">FACTURA ELECTRÓNICA</t>
                             <t t-if="o.tipo_documento=='TE'">TIQUETE ELECTRÓNICO</t>
                             <t t-if="o.tipo_documento=='NC'">NOTA DE CRÉDITO ELECTRÓNICA</t>
                             <br/>
-                            Versión Documento: 4.3<br/>
+                            Versión Documento: 4.4<br/>
                             <h2 t-esc="o.user_id.company_id.commercial_name"/>
                             <t t-esc="o.user_id.company_id.name"/><br/>
                             Cédula: <t t-esc="o.user_id.company_id.vat"/><br/>
                             Teléfono: <t t-esc="o.user_id.company_id.phone"/><br/>
                             <t t-esc="o.user_id.company_id.email"/><br/>
-                            <br/>
-                            <table class="text-center">
-                                <tr>
-                                    <td>Clave Numérica:</td>
-                                </tr>
-                                <tr>
-                                    <td><t t-esc="o.number_electronic[0:25]"/></td>
-                                </tr>
-                                <tr>
-                                    <td><t t-esc="o.number_electronic[25:]"/></td>
-                                </tr>
-                            </table>
+
                         </div>
                         <br/>
                             <table>
@@ -211,16 +228,24 @@
                                         </t>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr class="border-black o_subtotal" style="">
+                                    <td colspan="2"><strong>SubTotal</strong></td>
+                                    <td class="text-right">
+                                        <strong t-esc="o.amount_total - o.amount_tax"/>
+                                    </td>
+                                </tr>
+                                <tr t-foreach="o._amount_line_tax_iva()" t-as="taxes" style="">
+                                    <td colspan="2">
+                                        <strong t-esc="taxes['name']"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <strong t-esc="taxes['amount']"/>
+                                    </td>
+                                </tr>
+                                <tr class="border-black o_total">
                                     <td colspan="2"><strong>Total</strong></td>
                                     <td class="text-right">
                                         <strong t-esc="o.amount_total"/>
-                                    </td>
-                                </tr>
-                                <tr class="border-black">
-                                    <td colspan="2"><strong>IVA y Servicio incluidos</strong></td>
-                                    <td class="text-right">
-                                        <strong t-esc="o.amount_tax"/>
                                     </td>
                                 </tr>
                             </tbody>
@@ -244,8 +269,20 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <br/>
                         <div style="text-align:center">
-                            Res DGT-R-033-2019 del 20 / 06 / 2019
+                            <tr>
+                                <td>Clave Numérica:</td>
+                            </tr>
+                            <tr>
+                                <td><t t-esc="o.number_electronic[0:25]"/></td>
+                            </tr>
+                            <tr>
+                                <td><t t-esc="o.number_electronic[25:]"/></td>
+                            </tr>
+                        </div>
+                        <div style="text-align:center">
+                            Autorizada mediante resolución No MH-DGT-RES-0027-2024 del 19 de noviembre de 2024 Versión: 4.4
                         </div>
 
                     </div>
@@ -268,17 +305,21 @@
         <record id="paperformat_posreceipt" model="report.paperformat">
             <field name="name">Point Of Sale Receipt</field>
             <field name="default" eval="True"/>
-            <field name="format">custom</field>
-            <field name="page_height">150</field>
-            <field name="page_width">60</field>
+            <field name="format">Letter</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
             <field name="orientation">Portrait</field>
-            <field name="margin_top">3</field>
-            <field name="margin_bottom">3</field>
-            <field name="margin_left">3</field>
-            <field name="margin_right">3</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
             <field name="header_line" eval="False" />
-            <field name="header_spacing">3</field>
-            <field name="dpi">130</field>
+            <field name="header_spacing">5</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="pos_orders" model="ir.actions.report">
+            <field name="paperformat_id" ref="cr_electronic_invoice_pos.paperformat_posreceipt"/>
         </record>
 
     <!-- Mail template are declared in a NOUPDATE block
@@ -286,7 +327,7 @@
         <!--Email template -->
         <record id="email_template_pos_invoice" model="mail.template">
             <field name="name">POS Invoice - Send by Email</field>
-            <field name="email_from">${(object.user_id.email or object.company_id.email or 'noreply@localhost')|safe}</field>
+            <field name="email_from">felectronica@smartersend.net</field>
             <field name="subject">${object.company_id.name|safe} Invoice (Ref ${object.number or 'n/a'})</field>
             <field name="partner_to">${object.partner_id.id}</field>
             <field name="model_id" ref="point_of_sale.model_pos_order"/>

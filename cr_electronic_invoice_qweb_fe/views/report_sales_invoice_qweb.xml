@@ -83,7 +83,7 @@
             </table>
 
             <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css"/>
-            <style type="text/css">
+            <style  t-if="o.company_id.cr_invoice_color == 'black'" type="text/css">
 
                     body {
                         font-family: 'Droid Sans', Arial, sans-serif;
@@ -117,8 +117,143 @@
                     background-color:#fff;
                 }
         </style>
+        <style  t-if="o.company_id.cr_invoice_color == 'sempai'" type="text/css">
+
+                    body {
+                        font-family: 'Droid Sans', Arial, sans-serif;
+                        font-size:16px;
+
+                    }
+
+                .title{
+                color:#ce0b9d;
+                font-size:24px;
+                font-weight:bolder;
+                }
+                .rounded2{
+                border: 1px solid;
+                padding:5px 5px;
+                }
+                .dtheader{
+                    background-color:#ce0b9d;
+                    color:#ffffff;
+                    border:none;
+                    padding:5px 5px;
+                }
+                .dtcls{
+                color:#ce0b9d;
+                width:25%;
+                padding:5px 5px;
+                border: 1px solid;
+                }
+                .dtbg{
+                    margin:5px 5px;
+                    background-color:#fff;
+                }
+            </style>
+        <style  t-if="o.company_id.cr_invoice_color == 'moresempai'" type="text/css">
+
+                    body {
+                        font-family: 'Droid Sans', Arial, sans-serif;
+                        font-size:16px;
+
+                    }
+
+                .title{
+                color:#661ab2;
+                font-size:24px;
+                font-weight:bolder;
+                }
+                .rounded2{
+                border: 1px solid;
+                padding:5px 5px;
+                }
+                .dtheader{
+                    background-color:#661ab2;
+                    color:#ffffff;
+                    border:none;
+                    padding:5px 5px;
+                }
+                .dtcls{
+                color:#661ab2;
+                width:25%;
+                padding:5px 5px;
+                border: 1px solid;
+                }
+                .dtbg{
+                    margin:5px 5px;
+                    background-color:#fff;
+                }
+            </style>
+            <style  t-if="o.company_id.cr_invoice_color == 'blue'" type="text/css">
+
+                    body {
+                        font-family: 'Droid Sans', Arial, sans-serif;
+                        font-size:16px;
+
+                    }
+
+                .title{
+                color:#2874A6;
+                font-size:24px;
+                font-weight:bolder;
+                }
+                .rounded2{
+                border: 1px solid;
+                padding:5px 5px;
+                }
+                .dtheader{
+                    background-color:#2874A6;
+                    color:#ffffff;
+                    border:none;
+                    padding:5px 5px;
+                }
+                .dtcls{
+                color:#2874A6;
+                width:25%;
+                padding:5px 5px;
+                border: 1px solid;
+                }
+                .dtbg{
+                    margin:5px 5px;
+                    background-color:#fff;
+                }
+            </style>
+            <style  t-if="o.company_id.cr_invoice_color == 'green'" type="text/css">
+
+                    body {
+                        font-family: 'Droid Sans', Arial, sans-serif;
+                        font-size:16px;
+
+                    }
+
+                .title{
+                color:#196F3D;
+                font-size:24px;
+                font-weight:bolder;
+                }
+                .rounded2{
+                border: 1px solid;
+                padding:5px 5px;
+                }
+                .dtheader{
+                    background-color:#196F3D;
+                    color:#ffffff;
+                    border:none;
+                    padding:5px 5px;
+                }
+                .dtcls{
+                color:#196F3D;
+                width:25%;
+                padding:5px 5px;
+                border: 1px solid;
+                }
+                .dtbg{
+                    margin:5px 5px;
+                    background-color:#fff;
+                }
+            </style>
         </div><!---//end header-->
-        <br/><br/><br/><br/><br/><br/><br/>
         <div class="page" style="height:210mm;width:100%">
                     <div name="invoice_address">
                     </div>
@@ -151,12 +286,25 @@
                     </tr>
                     <tr style="border:1px solid black;">
                         <td>
+                            <strong>CORREO:</strong>
+                        </td>
+                        <td>
+                            <strong><span t-field="o.partner_id.email"/></strong>
+                        </td>
+                    </tr>
+                    <tr style="border:1px solid black;">
+                        <td>
                             <strong>CÉDULA JURÍDICA:</strong>
                         </td>
                         <td>
                             <span t-field="o.partner_id.vat"/>
                         </td>
-                        
+                        <td>
+                            <strong>CONDICIÓN VENTA:</strong>
+                        </td>
+                        <td>
+                            <span t-esc="o.payment_term_id and o.payment_term_id.name or 'CONTADO'"/>
+                        </td>
                     </tr>
                     <tr style="border:1px solid black;">
                         <td>
@@ -255,11 +403,11 @@
                             <td><span t-field="l.name"/></td>
                             <td class="hidden"><span t-field="l.origin"/></td>
                             <td class="text-right">
-                                <span t-field="l.quantity"/>
+                                <span t-field="l.quantity" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
                                 <span t-field="l.uom_id" groups="product.group_uom"/>
                             </td>
                             <td class="text-right">
-                                <span t-field="l.price_unit"/>
+                                <span t-field="l.price_unit" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
                             </td>
                             <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
                                 <span t-field="l.discount"/>
@@ -368,10 +516,34 @@
                         que podrá hacerse efectivo el día de su vencimiento y en caso de ejecución, renuncio a mi domicilio y los
                         trámites de juicio ejecutivo. Esta factura devengará 3% mensual después de su vencimiento.
                     </p>
+                    <t t-if="o.company_id.html_bank_account1 or o.company_id.html_bank_account2">
+                        Puede realizar transferencias o depósitos mediante las siguientes Cuentas Bancarias de <t t-esc="o.company_id.commercial_name"/>:
+                        <table width="100%;" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td width="50%"> <t t-raw="o.company_id.html_bank_account1"/>
+                                    <!--p style="font-size:16px;">
+                                        <strong>XXXXXX</strong><br/>
+                                        Cuenta: XXXXX<br/>
+                                        CC: XXXXXX<br/>
+                                        IBAN: XXXXX
+                                    </p-->
+                                </td>
+                                <td> <t t-raw="o.company_id.html_bank_account2"/>
+                                    <!--p style="font-size:16px;">
+                                        <strong>XXXXX</strong><br/>
+                                        Cuenta: XXXXX<br/>
+                                        CC: XXXXX<br/>
+                                        IBAN: XXXXX
+                                    </p-->
+                                </td>
+                            </tr>
+                        </table>
+                        <strong>CONFIRMACIONES:</strong> Para enviar confirmaciones de depósito    Correo:   <span t-field="o.company_id.email"/>
+                    </t>
                 </div>
                 <p class="text-center" style="padding:2px 2px 2px 2px">
                   Clave:<span t-field="o.number_electronic"/> // Usuario:<span t-field="o.user_id.name"/><br/>
-                  Autorizada mediante resolución No DGT-R-033-2019 del 20 de junio de 2019</p>
+                  Autorizada mediante resolución No MH-DGT-RES-0027-2024 del 19 de noviembre de 2024 Versión: 4.4</p>
             </t>
             <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css"/>
             <style type="text/css">

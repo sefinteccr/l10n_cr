@@ -51,6 +51,7 @@
                 </xpath>
                 <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='discount']" position="after">
                     <field name="discount_note"/>
+                    <field name="discount_code_id"/>
                 </xpath>
                 <xpath expr="//button[@name='action_invoice_draft']" position="after">
                     <button name="load_xml_data" type="object" string="Cargar datos desde XMLs" colspan="2" attrs="{'invisible':['|', ('state_tributacion','!=', False), '|', ('xml_comprobante', '=', False), ('xml_respuesta_tributacion', '=', False)]}" />
