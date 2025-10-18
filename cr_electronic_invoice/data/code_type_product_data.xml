@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="0">
+    <data noupdate="1">
 
         <!-- product code types -->
         <record id="cr_electronic_invoice.CodeTypeProduct_01" model="code.type.product">
