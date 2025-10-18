@@ -23,6 +23,7 @@
         'res_currency_cr_adapter',
         ],
     'data': [
+        'data/discount_code_data.xml',
         'data/account_tax_data.xml',
         'data/aut_ex_data.xml',
         'data/code_type_product_data.xml',
@@ -56,6 +57,7 @@
         'views/account_tax_views.xml',
         'views/account_invoice_import_wizard_view.xml',
         'views/economic_activity_views.xml',
+        'views/discount_code_views.xml',
         'views/menu_views.xml',
         'security/ir.model.access.csv',
     ],

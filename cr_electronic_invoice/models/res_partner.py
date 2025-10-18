@@ -13,7 +13,25 @@ _logger = logging.getLogger(__name__)
 class PartnerElectronic(models.Model):
     _inherit = "res.partner"
 
+    @api.model
+    def _selectionNombreInstitucion(self):
+        return [('01',"Ministerio de Hacienda"),
+            ('02',"Ministerio de Relaciones Exteriores y Culto"),
+            ('03',"Ministerio de Agricultura y Ganadería"),
+            ('04',"Ministerio de Economía, Industria y Comercio"),
+            ('05',"Cruz Roja Costarricense"),
+            ('06',"Benemérito Cuerpo de Bomberos de Costa Rica"),
+            ('07',"Asociación Obras del Espíritu Santo"),
+            ('08',"Federación Cruzada Nacional de protección al Anciano (Fecrunapa)"),
+            ('09',"Escuela de Agricultura de la Región Húmeda (EARTH)"),
+            ('10',"Instituto Centroamericano de Administración de Empresas (INCAE)"),
+            ('11',"Junta de Protección Social (JPS)"),
+            ('12',"Autoridad Reguladora de los Servicios Públicos (Aresep)"),
+            ('99',"Otros")
+            ]
+
     commercial_name = fields.Char(string="Commercial Name", required=False, )
+    legal_name = fields.Char(string="Legal Name", required=False, )
     state_id = fields.Many2one("res.country.state", string="Province", required=False, )
     district_id = fields.Many2one("res.country.district", string="District", required=False, )
     county_id = fields.Many2one("res.country.county", string="Canton", required=False, )
@@ -21,10 +39,19 @@ class PartnerElectronic(models.Model):
     identification_id = fields.Many2one("identification.type", string="Id Type",required=False, )
     payment_methods_id = fields.Many2one("payment.methods", string="Payment Method", required=False, )
     has_exoneration = fields.Boolean(string="Has Exoneration?", required=False)
-    type_exoneration = fields.Many2one("aut.ex", string="Authorization Type", required=False, )
-    exoneration_number = fields.Char(string="Exoneration Number", required=False, )
-    institution_name = fields.Char(string="Exoneration Issuer", required=False, )
-    date_issue = fields.Date(string="Issue Date", required=False, )
+    type_exoneration = fields.Many2one("aut.ex", string="Tipo Documento EXO", required=False,
+        help="Tipo de documento de exoneración o de autorización.")
+    type_exoneration_code = fields.Char(related="type_exoneration.code")
+    exoneration_number = fields.Char(string="Numero documento EXO", required=False, 
+        help="Número de documento de exoneración o de autorización")
+    exo_aticle = fields.Integer(string="Articulo", 
+        help="Número de artículo que establece la exoneración o autorización")
+    exo_inciso = fields.Integer(string="Inciso",
+        help="Número de inciso que establece la exoneración o autorización")
+    institution_name = fields.Selection(selection="_selectionNombreInstitucion", string="Nombre institución EXO", required=False, 
+        help="Nombre de institución o dependencia que emitió la exoneración")
+    date_issue = fields.Date(string="Fecha Emisión EXO", required=False, 
+        help="Fecha de emisión del documento de exoneración o de autorización")
     date_expiration = fields.Date(string="Expiration Date", required=False, )
     date_notification = fields.Date(string="Last notification date", required=False, )
     activity_id = fields.Many2one("economic.activity", string="Default Economic Activity", required=False, context={'active_test': False} )
@@ -104,10 +131,19 @@ class PartnerElectronic(models.Model):
                 activities = json_response["activities"]
                 activities_codes = list()
                 for activity in activities:
-                    if activity["estado"] == "A":
+                    if activity["estado"] == "A" and activity["codigo"] != '960113':
+                        economic_activitie = self.env['economic.activity'].with_context(active_test=False).search([('code', '=', activity['codigo'])])
+                        if not economic_activitie:
+                            self.env['economic.activity'].create({
+                                'code': activity['codigo'],
+                                'name': activity['descripcion'],
+                                'active': False
+                            })
                         activities_codes.append(activity["codigo"])
-                economic_activities = self.env['economic.activity'].with_context(active_test=False).search([('code', 'in', activities_codes)])
 
+                economic_activities = self.env['economic.activity'].with_context(active_test=False).search([('code', 'in', activities_codes)])
+                if not economic_activities:
+                    return
                 self.economic_activities_ids = economic_activities
                 self.name = json_response["name"]
 
