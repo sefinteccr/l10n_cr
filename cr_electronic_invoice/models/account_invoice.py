@@ -1212,22 +1212,10 @@ class AccountInvoiceElectronic(models.Model):
 
                                 if inv_line.product_id.cabys_code:
                                     line["codigoCabys"] = inv_line.product_id.cabys_code
-                                    if inv_line.product_id.cabys_product_id.cabys_medical:
-                                        if inv_line.product_id.cabys_medical_registry and inv_line.product_id.cabys_pharmaceutical_form:
-                                            line["FormaFarmaceutica"] = inv_line.product_id.cabys_pharmaceutical_form.code
-                                            line["RegistroMedicamento"] = inv_line.product_id.cabys_medical_registry
-                                        else:
-                                            _no_cabys_medical = _('E-INV CR: Producto médico sin información completa: %s', inv_line.name)
-                                            _logger.info('E-INV CR: Producto médico sin información completa: %s', inv_line.name)
+                                   
                                 elif inv_line.product_id.categ_id and inv_line.product_id.categ_id.cabys_code:
                                     line["codigoCabys"] = inv_line.product_id.categ_id.cabys_code
-                                    if inv_line.product_id.cabys_product_id.cabys_medical:
-                                        if inv_line.product_id.cabys_medical_registry and inv_line.product_id.cabys_pharmaceutical_form:
-                                            line["FormaFarmaceutica"] = inv_line.product_id.cabys_pharmaceutical_form.code
-                                            line["RegistroMedicamento"] = inv_line.product_id.cabys_medical_registry
-                                        else:
-                                            _no_cabys_medical = _('E-INV CR: Producto médico sin información completa: %s', inv_line.name)
-                                            _logger.info('E-INV CR: Producto médico sin información completa: %s', inv_line.name)
+                                    
                                 else:
                                     _no_CABYS_code = 'Aviso!.\nLinea sin código CABYS: %s' % inv_line.name
                                     continue
@@ -1235,7 +1223,7 @@ class AccountInvoiceElectronic(models.Model):
                                 _no_CABYS_code = 'Aviso!.\nLinea sin código CABYS: %s' % inv_line.name
                                 continue
 
-                            if inv.tipo_documento == 'FEE' and inv_line.tariff_head and inv_line.product_id.cabys_product_id.cabys_categoria1_id.codigo in ['0','1','2','3','4']:
+                            if inv.tipo_documento == 'FEE' and inv_line.tariff_head:
                                 line["partidaArancelaria"] = inv_line.tariff_head
 
                             if inv_line.discount and price_unit > 0:
@@ -1325,8 +1313,9 @@ class AccountInvoiceElectronic(models.Model):
                                 line["impuestoNeto"] = round(_line_tax, 5)
 
                             # Si no hay uom_id se asume como Servicio
-                            if not inv_line.uom_id or inv_line.uom_id.category_id.name in (
-                            'Services', 'Servicios') or inv_line.product_id.cabys_product_id.cabys_categoria1_id.codigo in ['5','6','7','8','9']:
+                            codigo = str(line.get("codigoCabys", "")).zfill(13)
+                            if (inv_line.product_id and inv_line.product_id.detailed_type == 'service') or (
+                                    codigo and int(codigo[0]) > 4):
                                 if taxes:
                                     if _tax_exoneration:
                                         if _percentage_exoneration < 1:
@@ -1343,7 +1332,7 @@ class AccountInvoiceElectronic(models.Model):
                                 else:
                                     total_servicio_exento += base_line
                             # else :
-                            elif inv_line.product_id.cabys_product_id.cabys_categoria1_id.codigo in ['0','1','2','3','4']:
+                            else:
                                 if taxes:
                                     if _tax_exoneration:
                                         if _percentage_exoneration < 1:

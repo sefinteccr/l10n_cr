@@ -46,7 +46,7 @@ class CabysCatalogImportWizard(models.TransientModel):
 
             return True, "Archivo válido"
         except Exception as e:
-            return False, f"Error al leer archivo: {str(e)}"
+            return False, "Error al leer archivo: %s" % str(e)
 
     def _analyze_excel_file(self):
         """Analiza el archivo Excel y devuelve los códigos encontrados"""
