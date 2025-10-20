@@ -592,7 +592,7 @@ def gen_xml_v43(inv, sale_conditions, total_servicio_gravado,
                 issuing_company.neighborhood_id.name
             )
             if neighborhood_value:
-                sb.Append(f"<Barrio>{neighborhood_value}</Barrio>")
+                 sb.Append("<Barrio>"+str(neighborhood_value)+"</Barrio>")
 
         sb.Append('<OtrasSenas>' + escape(str(issuing_company.street or 'No disponible')) + '</OtrasSenas>')
         sb.Append('</Ubicacion>')
@@ -647,7 +647,7 @@ def gen_xml_v43(inv, sale_conditions, total_servicio_gravado,
                                 receiver_company.neighborhood_id.name
                             )
                             if receiver_neighborhood_value:
-                                sb.Append(f"<Barrio>{receiver_neighborhood_value}</Barrio>")
+                                sb.Append("<Barrio>"+str(receiver_neighborhood_value)+"</Barrio>")
 
                         sb.Append('<OtrasSenas>' + escape(str(receiver_company.street or 'No disponible')) + '</OtrasSenas>')
                         sb.Append('</Ubicacion>')
@@ -1514,5 +1514,5 @@ def normalize_neighborhood(name: str) -> str:
         return ""
     name = name.strip()
     if len(name) < 5:  # 1-4 chars trigger prefix
-        name = f"Barrio {name}"
+        name = "Barrio %s"% name
     return escape(name)
