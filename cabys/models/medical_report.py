@@ -30,7 +30,7 @@ class MedicalReport(models.TransientModel):
         ])
 
         if not invoices:
-            raise UserError(f"No se encontraron registros desde {self.date_from} hasta {self.date_to}.")
+            raise UserError("No se encontraron registros desde %s hasta %s .",self.date_from,self.date_to )
 
         total_records = 0
         all_medical_data = []
@@ -64,7 +64,7 @@ class MedicalReport(models.TransientModel):
         if total_records > 0:
             return self.generate_excel_file(all_medical_data)
         else:
-            raise UserError(f"No se encontraron registros farmacéuticos desde {self.date_from} hasta {self.date_to}.")
+           raise UserError("No se encontraron registros desde %s hasta %s ." % self.date_from, self.date_to )
 
     def find_xml_attachment(self, invoice):
         """Busca el attachment XML válido para la factura"""
@@ -120,9 +120,9 @@ class MedicalReport(models.TransientModel):
             return medical_data
 
         except ET.ParseError as e:
-            raise UserError(f"Error al parsear XML: {str(e)}")
+            raise UserError("Error al parsear XML: %s" % str(e))
         except Exception as e:
-            raise UserError(f"Error al procesar XML: {str(e)}")
+            raise UserError("Error al parsear XML: %s" % str(e))
 
     def generate_excel_file(self, data):
         """Genera y descarga el reporte Excel"""
