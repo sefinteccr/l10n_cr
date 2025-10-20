@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data>
+
+	<record id="action_categoria1" model="ir.actions.act_window">
+		<field name="name">Categoria 1</field>
+		<field name="res_model">cabys.categoria1</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="action_categoria2" model="ir.actions.act_window">
+		<field name="name">Categoria 2</field>
+		<field name="res_model">cabys.categoria2</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="action_categoria3" model="ir.actions.act_window">
+		<field name="name">Categoria 3</field>
+		<field name="res_model">cabys.categoria3</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="action_categoria4" model="ir.actions.act_window">
+		<field name="name">Categoria 4</field>
+		<field name="res_model">cabys.categoria4</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="action_categoria5" model="ir.actions.act_window">
+		<field name="name">Categoria 5</field>
+		<field name="res_model">cabys.categoria5</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="action_categoria6" model="ir.actions.act_window">
+		<field name="name">Categoria 6</field>
+		<field name="res_model">cabys.categoria6</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="action_categoria7" model="ir.actions.act_window">
+		<field name="name">Categoria 7</field>
+		<field name="res_model">cabys.categoria7</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="action_categoria8" model="ir.actions.act_window">
+		<field name="name">Categoria 8</field>
+		<field name="res_model">cabys.categoria8</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="cabys_catalog_import_wizard_form_view" model="ir.ui.view">
+		<field name="name">cabys.catalog.import.wizard.form</field>
+		<field name="model">cabys.catalog.import.wizard</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<field name="notes"/>
+						<field string="Cargar catálogo en archivo de Excel" name="cabys_excel_file" attrs="{'invisible':[('cabys_excel_file','!=',False)]}"/>
+
+						<field name="file_url" attrs="{'invisible':[('cabys_excel_file','!=',False)]}"/>
+					</group>
+				</sheet>
+				<footer>
+					<button string="Descargar catálogo del BCCR" name="download_catalog" class="btn btn-info" type="object" attrs="{'invisible':[('cabys_excel_file','!=',False)]}"/>
+					<field name="button_enable" invisible="1"/>
+					<button string="Importar Catálogo" name="update_catalog" type="object" class="oe_highlight" attrs="{'invisible':[('button_enable','=',False)]}"/>
+					<button string="Cerrar esta ventana" class="btn btn-default" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<menuitem id="menu_cabys" name="Cabys" parent="account.account_account_menu" sequence="30"/>
+	<menuitem id="menu_categoria1" name="Categoría 1" parent="menu_cabys" sequence="31" action="action_categoria1"/>
+	<menuitem id="menu_categoria2" name="Categoría 2" parent="menu_cabys" sequence="32" action="action_categoria2"/>
+	<menuitem id="menu_categoria3" name="Categoría 3" parent="menu_cabys" sequence="33" action="action_categoria3"/>
+	<menuitem id="menu_categoria4" name="Categoría 4" parent="menu_cabys" sequence="34" action="action_categoria4"/>
+	<menuitem id="menu_categoria5" name="Categoría 5" parent="menu_cabys" sequence="35" action="action_categoria5"/>
+	<menuitem id="menu_categoria6" name="Categoría 6" parent="menu_cabys" sequence="36" action="action_categoria6"/>
+	<menuitem id="menu_categoria7" name="Categoría 7" parent="menu_cabys" sequence="37" action="action_categoria7"/>
+	<menuitem id="menu_categoria8" name="Categoría 8" parent="menu_cabys" sequence="38" action="action_categoria8"/>
+	<menuitem id="menu_producto"   name="Catálogo Cabys"   parent="menu_cabys" sequence="39" action="action_productos"/>
+
+</data></odoo>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Acción de servidor para generar reporte -->
+    <record id="action_generate_medical_report" model="ir.actions.server">
+        <field name="name">Generar Registros Farmacéuticos</field>
+        <field name="model_id" ref="model_medical_report"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.generate_medical_report()
+        </field>
+    </record>
+
+    <!-- Vista del wizard para seleccionar fechas -->
+    <record id="view_medical_report_wizard_form" model="ir.ui.view">
+        <field name="name">medical.report.wizard.form</field>
+        <field name="model">medical.report</field>
+        <field name="arch" type="xml">
+            <form string="Generar Reporte Farmacéutico">
+                <sheet>
+                    <div class="alert alert-info" role="alert">
+                        <strong>Instrucciones:</strong>
+                        <ul>
+                            <li>Seleccione el rango de fechas para generar el reporte</li>
+                            <li>Luego haga clic en el botón Generar Reporte</li>
+                            <li>El reporte se generará en formato Excel y se descargará automáticamente</li>
+                            <li>Para salir haga clic en la X que se encuentra a la derecha</li>
+                            <li><strong>Nota:</strong> Se extraerán automáticamente los registros farmacéuticos (Detalle, Registro Medicamento y Forma Farmacéutica)</li>
+                        </ul>
+                    </div>
+                    <group>
+                        <group string="Rango de Fechas" colspan="2">
+                            <field name="date_from" string="Fecha inicial" help="Fecha desde la cual buscar facturas (por defecto: 01/01/2025)"/>
+                            <field name="date_to" string="Fecha final" help="Fecha hasta la cual buscar facturas (por defecto: fecha actual)"/>
+                        </group>
+                    </group>
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Información importante:</strong>
+                        <br/>
+                        - El proceso puede tomar unos minutos dependiendo de la cantidad de facturas a procesar
+                        <br/>
+                        - Se procesan todas las facturas indiferentemente de su estado
+                    </div>
+                </sheet>
+                <footer>
+                    <button name="generate_medical_report" type="object" string="Generar Reporte" class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción de ventana para el menú -->
+    <record id="action_medical_report" model="ir.actions.act_window">
+        <field name="name">Registros Farmacéuticos</field>
+        <field name="res_model">medical.report</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_medical_report_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menú en Facturación -->
+    <menuitem
+        id="menu_medical_main_finance"
+        name="Registros Farmacéuticos"
+        parent="account.menu_finance"
+        sequence="100"
+    />
+
+    <menuitem
+        id="menu_medical_report_finance"
+        name="Generar Reporte"
+        parent="menu_medical_main_finance"
+        action="action_medical_report"
+        sequence="10"
+    />
+
+    <!-- Menú en Inventario -->
+    <menuitem
+        id="menu_medical_main_inventory"
+        name="Registros Farmacéuticos"
+        parent="stock.menu_stock_root"
+        sequence="100"
+    />
+
+    <menuitem
+        id="menu_medical_report_inventory"
+        name="Generar Reporte"
+        parent="menu_medical_main_inventory"
+        action="action_medical_report"
+        sequence="10"
+    />
+</odoo>

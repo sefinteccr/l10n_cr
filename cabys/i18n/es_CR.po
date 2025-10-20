@@ -1,0 +1,663 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* cabys
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-13 14:57+0000\n"
+"PO-Revision-Date: 2025-06-13 14:57+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: cabys
+#: model:mail.channel,name:cabys.channel_cabys_all_employees
+msgid "Actualizacion CABYS"
+msgstr "Actualización CABYS"
+
+#. module: cabys
+#: code:addons/cabys/wizard/cabys_catalog_import_wizard.py:163
+#, python-format
+msgid "Actualización de catálogo Cabys"
+msgstr ""
+
+#. module: cabys
+#. openerp-web
+#: code:addons/cabys/static/src/xml/cabys_templates.xml:9
+#, python-format
+msgid "Actualizar Catálogo Cabys"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_medical_catalog_import_wizard__cabys_excel_file
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_medical_catalog_import_wizard_form_view
+msgid "Archivo Excel"
+msgstr "Archivo de Excel"
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_catalog_import_wizard__cabys_excel_file
+msgid "Archivo de Excel"
+msgstr ""
+
+#. module: cabys
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_productos_search_view
+msgid "Buscar en el catálogo Cabys"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_catalog_import_wizard__button_enable
+msgid "Button Enable"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_product_category__cabys_code
+#: model:ir.model.fields,field_description:cabys.field_product_product__cabys_code
+#: model:ir.model.fields,field_description:cabys.field_product_template__cabys_code
+msgid "CAByS Code"
+msgstr "Código CABYS"
+
+#. module: cabys
+#: model:ir.model.fields,help:cabys.field_product_category__cabys_code
+#: model:ir.model.fields,help:cabys.field_product_product__cabys_code
+#: model:ir.model.fields,help:cabys.field_product_template__cabys_code
+msgid "CAByS code from Ministerio de Hacienda"
+msgstr "Código cabys desde Hacienda"
+
+#. module: cabys
+#: model:ir.ui.menu,name:cabys.menu_cabys
+#: model_terms:ir.ui.view,arch_db:cabys.view_product_product_form_inherit
+#: model_terms:ir.ui.view,arch_db:cabys.view_product_template_form_inherit
+msgid "Cabys"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria2__cabys_categoria1_id
+msgid "Cabys Categoria1"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria3__cabys_categoria2_id
+msgid "Cabys Categoria2"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria4__cabys_categoria3_id
+msgid "Cabys Categoria3"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria5__cabys_categoria4_id
+msgid "Cabys Categoria4"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria6__cabys_categoria5_id
+msgid "Cabys Categoria5"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria7__cabys_categoria6_id
+msgid "Cabys Categoria6"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria8__cabys_categoria7_id
+msgid "Cabys Categoria7"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__cabys_enabled
+msgid "Cabys Enabled"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model,name:cabys.model_cabys_forma_farmaceutica
+msgid "Cabys Forma Farmaceútica"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__cabys_medical
+msgid "Cabys Medical"
+msgstr "Cabys médico"
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_product_product__cabys_medical_registry
+#: model:ir.model.fields,field_description:cabys.field_product_template__cabys_medical_registry
+msgid "Cabys Medical Registry"
+msgstr "Registro médico Cabys"
+
+#. module: cabys
+#: model:ir.actions.server,name:cabys.ir_cron_Scheduled_catalog_ir_actions_server
+#: model:ir.cron,cron_name:cabys.ir_cron_Scheduled_catalog
+#: model:ir.cron,name:cabys.ir_cron_Scheduled_catalog
+msgid "Cabys Scheduled Actions"
+msgstr ""
+
+#. module: cabys
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_medical_catalog_import_wizard_form_view
+msgid "Cancelar"
+msgstr ""
+
+#. module: cabys
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_catalog_import_wizard_form_view
+msgid "Cargar catálogo en archivo de Excel"
+msgstr ""
+
+#. module: cabys
+#: model:ir.actions.act_window,name:cabys.action_categoria1
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria1__name
+msgid "Categoria 1"
+msgstr ""
+
+#. module: cabys
+#: model:ir.actions.act_window,name:cabys.action_categoria2
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria2__name
+msgid "Categoria 2"
+msgstr ""
+
+#. module: cabys
+#: model:ir.actions.act_window,name:cabys.action_categoria3
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria3__name
+msgid "Categoria 3"
+msgstr ""
+
+#. module: cabys
+#: model:ir.actions.act_window,name:cabys.action_categoria4
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria4__name
+msgid "Categoria 4"
+msgstr ""
+
+#. module: cabys
+#: model:ir.actions.act_window,name:cabys.action_categoria5
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria5__name
+msgid "Categoria 5"
+msgstr ""
+
+#. module: cabys
+#: model:ir.actions.act_window,name:cabys.action_categoria6
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria6__name
+msgid "Categoria 6"
+msgstr ""
+
+#. module: cabys
+#: model:ir.actions.act_window,name:cabys.action_categoria7
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria7__name
+msgid "Categoria 7"
+msgstr ""
+
+#. module: cabys
+#: model:ir.actions.act_window,name:cabys.action_categoria8
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria8__name
+msgid "Categoria 8"
+msgstr ""
+
+#. module: cabys
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_productos_form_view
+msgid "Categorias"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__category_ids
+msgid "Categorias con este código"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__cabys_categoria1_id
+#: model:ir.ui.menu,name:cabys.menu_categoria1
+msgid "Categoría 1"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model,name:cabys.model_cabys_categoria1
+msgid "Categoría 1 de Cabys"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__cabys_categoria2_id
+#: model:ir.ui.menu,name:cabys.menu_categoria2
+msgid "Categoría 2"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model,name:cabys.model_cabys_categoria2
+msgid "Categoría 2 de Cabys"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__cabys_categoria3_id
+#: model:ir.ui.menu,name:cabys.menu_categoria3
+msgid "Categoría 3"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model,name:cabys.model_cabys_categoria3
+msgid "Categoría 3 de Cabys"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__cabys_categoria4_id
+#: model:ir.ui.menu,name:cabys.menu_categoria4
+msgid "Categoría 4"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model,name:cabys.model_cabys_categoria4
+msgid "Categoría 4 de Cabys"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__cabys_categoria5_id
+#: model:ir.ui.menu,name:cabys.menu_categoria5
+msgid "Categoría 5"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model,name:cabys.model_cabys_categoria5
+msgid "Categoría 5 de Cabys"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__cabys_categoria6_id
+#: model:ir.ui.menu,name:cabys.menu_categoria6
+msgid "Categoría 6"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model,name:cabys.model_cabys_categoria6
+msgid "Categoría 6 de Cabys"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__cabys_categoria7_id
+#: model:ir.ui.menu,name:cabys.menu_categoria7
+msgid "Categoría 7"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model,name:cabys.model_cabys_categoria7
+msgid "Categoría 7 de Cabys"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__cabys_categoria8_id
+#: model:ir.ui.menu,name:cabys.menu_categoria8
+msgid "Categoría 8"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model,name:cabys.model_cabys_categoria8
+msgid "Categoría 8 de Cabys"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria1__cabys_categoria2_ids
+msgid "Categorías 2"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria2__cabys_categoria3_ids
+msgid "Categorías 3"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria3__cabys_categoria4_ids
+msgid "Categorías 4"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria4__cabys_categoria5_ids
+msgid "Categorías 5"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria5__cabys_categoria6_ids
+msgid "Categorías 6"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria6__cabys_categoria7_ids
+msgid "Categorías 7"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria7__cabys_categoria8_ids
+msgid "Categorías 8"
+msgstr ""
+
+#. module: cabys
+#: model:ir.ui.menu,name:cabys.menu_producto
+msgid "Catálogo Cabys"
+msgstr ""
+
+#. module: cabys
+#: code:addons/cabys/wizard/cabys_catalog_import_wizard.py:405
+#, python-format
+msgid "Catálogo Cabys actualizado exitosamente"
+msgstr ""
+
+#. module: cabys
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_productos_tree_view
+msgid "Catálogo de Productos Cabys"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model,name:cabys.model_cabys_producto
+msgid "Catálogo de bienes y servicios (Cabys)"
+msgstr ""
+
+#. module: cabys
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_catalog_import_wizard_form_view
+msgid "Cerrar esta ventana"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model,name:cabys.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_catalog_import_wizard__create_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria1__create_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria2__create_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria3__create_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria4__create_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria5__create_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria6__create_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria7__create_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria8__create_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_forma_farmaceutica__create_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_medical_catalog_import_wizard__create_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_catalog_import_wizard__create_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria1__create_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria2__create_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria3__create_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria4__create_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria5__create_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria6__create_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria7__create_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria8__create_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_forma_farmaceutica__create_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_medical_catalog_import_wizard__create_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria1__codigo
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria2__codigo
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria3__codigo
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria4__codigo
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria5__codigo
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria6__codigo
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria7__codigo
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria8__codigo
+#: model:ir.model.fields,field_description:cabys.field_cabys_forma_farmaceutica__code
+msgid "Código"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__codigo
+msgid "Código Cabys"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_res_company__cabys_product_id
+msgid "Código Cabys para productos sin codigo asignado"
+msgstr ""
+
+#. module: cabys
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_catalog_import_wizard_form_view
+msgid "Descargar catálogo del BCCR"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_catalog_import_wizard__notes
+msgid "Descripción"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__name
+msgid "Descripción del bien o servicio"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_catalog_import_wizard__display_name
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria1__display_name
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria2__display_name
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria3__display_name
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria4__display_name
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria5__display_name
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria6__display_name
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria7__display_name
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria8__display_name
+#: model:ir.model.fields,field_description:cabys.field_cabys_forma_farmaceutica__display_name
+#: model:ir.model.fields,field_description:cabys.field_cabys_medical_catalog_import_wizard__display_name
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: cabys
+#: code:addons/cabys/wizard/cabys_medical_catalog_import_wizard.py:103
+#, python-format
+msgid "Error al procesar archivo Excel: %s"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_catalog_import_wizard__file_url
+msgid "File Url"
+msgstr ""
+
+#. module: cabys
+#: model:ir.actions.act_window,name:cabys.action_forma_farmaceutica
+#: model:ir.model.fields,field_description:cabys.field_cabys_forma_farmaceutica__name
+#: model:ir.model.fields,field_description:cabys.field_product_product__cabys_pharmaceutical_form
+#: model:ir.model.fields,field_description:cabys.field_product_template__cabys_pharmaceutical_form
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_forma_farmaceutica_tree_view
+msgid "Forma Farmaceútica"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_medical_catalog_import_wizard__button_enable
+msgid "Habilitar Importación"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_catalog_import_wizard__id
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria1__id
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria2__id
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria3__id
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria4__id
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria5__id
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria6__id
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria7__id
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria8__id
+#: model:ir.model.fields,field_description:cabys.field_cabys_forma_farmaceutica__id
+#: model:ir.model.fields,field_description:cabys.field_cabys_medical_catalog_import_wizard__id
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__id
+msgid "ID"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model,name:cabys.model_cabys_catalog_import_wizard
+msgid "Import the Cabys Catalog from an Excel file."
+msgstr ""
+
+#. module: cabys
+#: model:ir.ui.menu,name:cabys.menu_import_cabys_medical
+msgid "Importar Catalogo Medico Cabys"
+msgstr ""
+
+#. module: cabys
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_catalog_import_wizard_form_view
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_medical_catalog_import_wizard_form_view
+msgid "Importar Catálogo"
+msgstr ""
+
+#. module: cabys
+#: model:ir.actions.act_window,name:cabys.action_cabys_medical_import_wizard
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_medical_catalog_import_wizard_form_view
+msgid "Importar Catálogo Médico CABYS"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model,name:cabys.model_cabys_medical_catalog_import_wizard
+msgid "Importar Catálogo Médico CABYS desde Excel"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__impuesto
+#: model:ir.model.fields,field_description:cabys.field_product_product__cabys_tax
+#: model:ir.model.fields,field_description:cabys.field_product_template__cabys_tax
+msgid "Impuesto"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_catalog_import_wizard____last_update
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria1____last_update
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria2____last_update
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria3____last_update
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria4____last_update
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria5____last_update
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria6____last_update
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria7____last_update
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria8____last_update
+#: model:ir.model.fields,field_description:cabys.field_cabys_forma_farmaceutica____last_update
+#: model:ir.model.fields,field_description:cabys.field_cabys_medical_catalog_import_wizard____last_update
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_catalog_import_wizard__write_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria1__write_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria2__write_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria3__write_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria4__write_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria5__write_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria6__write_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria7__write_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria8__write_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_forma_farmaceutica__write_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_medical_catalog_import_wizard__write_uid
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_catalog_import_wizard__write_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria1__write_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria2__write_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria3__write_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria4__write_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria5__write_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria6__write_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria7__write_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria8__write_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_forma_farmaceutica__write_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_medical_catalog_import_wizard__write_date
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: cabys
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_productos_search_view
+msgid "Mostrar productos en uso del sistema"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_medical_catalog_import_wizard__file_name
+msgid "Nombre de archivo"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__first_description
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_productos_form_view
+msgid "Nota explicativa 1. Incluye"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__second_description
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_productos_form_view
+msgid "Nota explicativa 2. Excluye"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_medical_catalog_import_wizard__notes
+msgid "Notas"
+msgstr ""
+
+#. module: cabys
+#: code:addons/cabys/wizard/cabys_medical_catalog_import_wizard.py:108
+#, python-format
+msgid "Por favor suba un archivo Excel primero"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model,name:cabys.model_product_category
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: cabys
+#: model:ir.model,name:cabys.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_product_category__cabys_product_id
+#: model:ir.model.fields,field_description:cabys.field_product_product__cabys_product_id
+#: model:ir.model.fields,field_description:cabys.field_product_template__cabys_product_id
+msgid "Producto en el catálogo Cabys"
+msgstr ""
+
+#. module: cabys
+#: model:ir.actions.act_window,name:cabys.action_productos
+#: model:ir.model.fields,field_description:cabys.field_cabys_categoria8__cabys_producto_ids
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_productos_form_view
+msgid "Productos"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,field_description:cabys.field_cabys_producto__product_ids
+msgid "Productos con este código"
+msgstr ""
+
+#. module: cabys
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_productos_search_view
+msgid "Productos en Uso"
+msgstr ""
+
+#. module: cabys
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_medical_catalog_import_wizard_form_view
+msgid "Seleccione el archivo Excel con el catálogo CABYS médico"
+msgstr ""
+
+#. module: cabys
+#: model:ir.model.fields,help:cabys.field_cabys_medical_catalog_import_wizard__cabys_excel_file
+msgid "Seleccione el archivo Excel con el catálogo CABYS médico (.xls o .xlsx)"
+msgstr ""
+
+#. module: cabys
+#: sql_constraint:cabys.producto:0
+msgid "Ya existe un registro con el mismo código."
+msgstr ""
+
+#. module: cabys
+#: model_terms:ir.ui.view,arch_db:cabys.cabys_productos_search_view
+msgid "cursos"
+msgstr ""
+
+#. module: cabys
+#: model_terms:ir.ui.view,arch_db:cabys.product_template_search_view
+msgid "productos sin cabys"
+msgstr ""
+

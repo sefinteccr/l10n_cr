@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vista para el wizard de importación -->
+    <record id="cabys_medical_catalog_import_wizard_form_view" model="ir.ui.view">
+        <field name="name">cabys.medical.catalog.import.wizard.form</field>
+        <field name="model">cabys.medical.catalog.import.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Importar Catálogo Médico CABYS">
+                <sheet>
+                    <group>
+                        <field name="notes" widget="html" readonly="1"/>
+                        <field name="cabys_excel_file" string="Archivo Excel"
+                               filename="file_name"
+                               help="Seleccione el archivo Excel con el catálogo CABYS médico"/>
+                        <field name="button_enable" invisible="1"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="update_catalog" string="Importar Catálogo"
+                            type="object" class="oe_highlight"
+                            attrs="{'invisible': [('button_enable', '=', False)]}"/>
+                    <button string="Cancelar" special="cancel" class="btn-default"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción para abrir el wizard -->
+    <record id="action_cabys_medical_import_wizard" model="ir.actions.act_window">
+        <field name="name">Importar Catálogo Médico CABYS</field>
+        <field name="res_model">cabys.medical.catalog.import.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menú simple que apunta directamente a la acción -->
+	<menuitem id="menu_import_cabys_medical"
+			  name="Importar Catalogo Medico Cabys"
+			  parent="account.account_account_menu"
+			  sequence="40"
+			  action="action_cabys_medical_import_wizard"/>
+</odoo>

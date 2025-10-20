@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data>
+        <record id="cabys_forma_farmaceutica_tree_view" model="ir.ui.view">
+                <field name="name">cabys.forma.farmaceutica.tree</field>
+                <field name="model">cabys.forma.farmaceutica</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                        <tree string="Forma Farmaceútica">
+                                <field name="code"/>
+                                <field name="name"/>
+                        </tree>
+                </field>
+        </record>
+
+	<record id="action_forma_farmaceutica" model="ir.actions.act_window">
+		<field name="name">Forma Farmaceútica</field>
+		<field name="res_model">cabys.forma.farmaceutica</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+</data></odoo>

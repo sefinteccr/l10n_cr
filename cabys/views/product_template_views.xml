@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data>
+
+    <record id="view_product_template_form_inherit" model="ir.ui.view">
+        <field name="name">product.template.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+   	    <xpath expr="//field[@name='default_code']" position="after">
+                <field name="cabys_code"/>
+                <field name="cabys_tax"/>
+            </xpath>
+
+            <xpath expr="//page[@name='general_information']" position="after">
+                <page name="cabys" string="Cabys" groups="account.group_account_manager">
+					<group>
+						<field name="cabys_product_id" options="{'no_create': True, 'no_create_edit': True, 'no_quick_create': True}"/>
+                        <field name="cabys_code" readonly="1"/>
+                        <field name="cabys_tax" readonly="1"/>
+                        <field name="cabys_medical_registry"/>
+                        <field name="cabys_pharmaceutical_form"/>
+					</group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="product_template_search_view" model="ir.ui.view">
+        <field name="name">product.template.search.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pricelist_id']" position="after">
+                <separator/>
+                <filter name="cabys_noproduct" string="productos sin cabys" domain="[('cabys_product_id','=',False)]"/>
+            </xpath>
+        </field>
+    </record>
+
+</data></odoo>
