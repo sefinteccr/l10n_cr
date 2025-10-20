@@ -1314,7 +1314,7 @@ class AccountInvoiceElectronic(models.Model):
 
                             # Si no hay uom_id se asume como Servicio
                             codigo = str(line.get("codigoCabys", "")).zfill(13)
-                            if (inv_line.product_id and inv_line.product_id.detailed_type == 'service') or (
+                            if (inv_line.product_id and inv_line.product_id.type == 'service') or (
                                     codigo and int(codigo[0]) > 4):
                                 if taxes:
                                     if _tax_exoneration:
