@@ -1217,7 +1217,7 @@ class AccountInvoiceElectronic(models.Model):
                                             line["FormaFarmaceutica"] = inv_line.product_id.cabys_pharmaceutical_form.code
                                             line["RegistroMedicamento"] = inv_line.product_id.cabys_medical_registry
                                         else:
-                                            _no_cabys_medical = _(f'Warning!.\nLine without CABYS medical information: {inv_line.name}')
+                                            _no_cabys_medical = _('E-INV CR: Producto médico sin información completa: %s', inv_line.name)
                                             _logger.info('E-INV CR: Producto médico sin información completa: %s', inv_line.name)
                                 elif inv_line.product_id.categ_id and inv_line.product_id.categ_id.cabys_code:
                                     line["codigoCabys"] = inv_line.product_id.categ_id.cabys_code
@@ -1226,7 +1226,7 @@ class AccountInvoiceElectronic(models.Model):
                                             line["FormaFarmaceutica"] = inv_line.product_id.cabys_pharmaceutical_form.code
                                             line["RegistroMedicamento"] = inv_line.product_id.cabys_medical_registry
                                         else:
-                                            _no_cabys_medical = _(f'Warning!.\nLine without CABYS medical information: {inv_line.name}')
+                                            _no_cabys_medical = _('E-INV CR: Producto médico sin información completa: %s', inv_line.name)
                                             _logger.info('E-INV CR: Producto médico sin información completa: %s', inv_line.name)
                                 else:
                                     _no_CABYS_code = 'Aviso!.\nLinea sin código CABYS: %s' % inv_line.name
