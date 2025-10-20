@@ -170,9 +170,9 @@ class CompanyElectronic(models.Model):
 
         message = ''
         if days_left >= 0:
-            message = f'Su llave criptográfica está a punto de expirar, le quedan {days_left} día(s)'
+            message = 'Su llave criptográfica está a punto de expirar, le quedan  %s día(s)', days_left
         else:
-            message = f'No podrá validar porque su llave criptográfica expiró hace {abs(days_left)} día(s)'
+            message = 'No podrá validar porque su llave criptográfica expiró hace %s día(s)',abs(days_left)
 
         return message
 
