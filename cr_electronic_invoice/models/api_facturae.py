@@ -18,15 +18,15 @@ from odoo import _
 from odoo.exceptions import UserError
 from ..xades.context2 import XAdESContext2, PolicyId2, create_xades_epes_signature
 
-# from cryptography.hazmat.primitives.asymmetric import padding
-# from cryptography.hazmat.primitives.hashes import SHA256
-# from cryptography.hazmat.primitives.serialization import Encoding, pkcs12
-# from hashlib import sha256
+from cryptography.hazmat.primitives.asymmetric import padding
+from cryptography.hazmat.primitives.hashes import SHA256
+from cryptography.hazmat.primitives.serialization import Encoding, pkcs12
+from hashlib import sha256
 
 from xml.sax.saxutils import escape
-# from xml.etree import ElementTree
-# from lxml import etree
-# from html import escape  # escapes &, <, > … for XML safety
+from xml.etree import ElementTree
+from lxml import etree
+from html import escape  # escapes &, <, > … for XML safety
 
 
 
@@ -46,8 +46,8 @@ from .. import extensions
 _logger = logging.getLogger(__name__)
 
 
-def sign_xml(cert, password, xml, policy_id='https://cdn.comprobanteselectronicos.go.cr/xml-schemas/'
-                'Resoluci%C3%B3n_General_sobre_disposiciones_t%C3%A9cnicas_comprobantes_electr%C3%B3nicos_para_efectos_tributarios.pdf'):
+def sign_xml(cert, password, xml, policy_id='https://www.hacienda.go.cr/ATV/ComprobanteElectronico/docs/esquemas/'
+             '2016/v4.2/ResolucionComprobantesElectronicosDGT-R-48-2016_4.2.pdf'):
     root = etree.fromstring(xml)
     _logger.info('Firma 1')
     signature = create_xades_epes_signature()
