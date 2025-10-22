@@ -1411,6 +1411,7 @@ class AccountInvoiceElectronic(models.Model):
                     total_descuento = round(total_descuento, 5)
                     totalServNoSujeto = round(totalServNoSujeto, 5)
                     totalMercNoSujeta = round(totalMercNoSujeta, 5)
+                    _logger.info('Aqui llegue 1')
                     # ESTE METODO GENERA EL XML DIRECTAMENTE DESDE PYTHON
                     xml_string_builder = api_facturae.gen_xml_v43(
                         inv, sale_conditions, total_servicio_gravado,
@@ -1422,6 +1423,7 @@ class AccountInvoiceElectronic(models.Model):
                         otros_cargos, currency_rate, invoice_comments,
                         tipo_documento_referencia, numero_documento_referencia,
                         fecha_emision_referencia, codigo_referencia, razon_referencia)
+                    _logger.info('Aqui llegue 3')
 
                     xml_to_sign = str(xml_string_builder)
                     xml_firmado = api_facturae.sign_xml(
