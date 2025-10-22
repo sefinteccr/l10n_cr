@@ -49,6 +49,7 @@ _logger = logging.getLogger(__name__)
 def sign_xml(cert, password, xml, policy_id='https://cdn.comprobanteselectronicos.go.cr/xml-schemas/'
                 'Resoluci%C3%B3n_General_sobre_disposiciones_t%C3%A9cnicas_comprobantes_electr%C3%B3nicos_para_efectos_tributarios.pdf'):
     root = etree.fromstring(xml)
+    _logger.info('Firma 1')
     signature = create_xades_epes_signature()
 
     policy = PolicyId2()
@@ -58,8 +59,9 @@ def sign_xml(cert, password, xml, policy_id='https://cdn.comprobanteselectronico
     ctx = XAdESContext2(policy)
     certificate = crypto.load_pkcs12(base64.b64decode(cert), password)
     ctx.load_pkcs12(certificate)
+    _logger.info('Firma 2')
     ctx.sign(signature)
-
+    _logger.info('Firma 3')
     return etree.tostring(root, encoding='UTF-8', method='xml', xml_declaration=True, with_tail=False)
 
 # # Para version python 3.10
